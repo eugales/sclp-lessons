@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lessons2/home_screen.dart';
+import 'generated/l10n.dart';
 
 
 class LoginScreen extends StatefulWidget {
@@ -17,14 +18,14 @@ class _LoginScreenState extends State<LoginScreen> {
 
   String? _loginValidator(String? value) {
     if (value == null || value.isEmpty || value.length < 3) {
-      return 'Логин должен содержать не менее 3 символов';
+      return S.of(context).inputErrorLoginIsShort;
     }
     return null;
   }
 
   String? _passwordValidator(String? value) {
     if (value == null || value.isEmpty || value.length < 8) {
-      return 'Пароль должен содержать не менее 8 символов';
+      return S.of(context).inputErrorPasswordIsShort;
     }
     return null;
   }
@@ -50,13 +51,13 @@ class _LoginScreenState extends State<LoginScreen> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: const Text('Попробуйте снова'),
+            title: Text(S.of(context).tryAgain),
             actions: [
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
-                child: const Text('Закрыть'),
+                child: Text(S.of(context).close),
               )
             ],
           );
@@ -73,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Авторизация'),
+        title: Text(S.of(context).auth),
         centerTitle: false,
       ),
       body: Padding(
@@ -86,9 +87,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text(
-                      'Введите логин и пароль',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    Text(
+                      S.of(context).inputLoginAndPassword,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                     TextFormField(
                       controller: _loginController,
@@ -96,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       validator: _loginValidator,
                       onChanged: _onValueChanged,
                       decoration: InputDecoration(
-                        label: const Text('Логин'),
+                        label: Text(S.of(context).login),
                         counter: Text(
                             '${_loginController.text.length}/8'),
                       ),
@@ -108,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onChanged: _onValueChanged,
                       obscureText: true,
                       decoration: InputDecoration(
-                          label: const Text('Пароль'),
+                          label: Text(S.of(context).password),
                           counter: Text(
                               '${_passwordController.text.length}/16')),
                     ),
@@ -121,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Expanded(
                   child: ElevatedButton(
                     onPressed: _onLoginPressed,
-                    child: const Text('Вход'),
+                    child: Text(S.of(context).signIn),
                   ),
                 )
               ],
