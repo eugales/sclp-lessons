@@ -23,6 +23,17 @@ class _MyHomePageState extends State<HomeScreen> {
     });
   }
 
+  void languageChange(value) {
+    switch (value) {
+      case 'ru':
+        S.load(const Locale('ru', 'RU'));
+        break;
+      default:
+        S.load(const Locale('en', 'EN'));
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +45,25 @@ class _MyHomePageState extends State<HomeScreen> {
         padding: const EdgeInsets.only(bottom: 50),
         child: Column(
           children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(S.of(context).language),
+                DropdownButton(
+                  items: [
+                    DropdownMenuItem(
+                      value: 'en',
+                      child: Text(S.of(context).english),
+                    ),
+                    DropdownMenuItem(
+                      value: 'ru',
+                      child: Text(S.of(context).russian),
+                    )
+                  ],
+                  onChanged: languageChange,
+                )
+              ],
+            ),
             Expanded(
               child: Row(
                 children: [
