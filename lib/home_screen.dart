@@ -23,7 +23,7 @@ class _MyHomePageState extends State<HomeScreen> {
     });
   }
 
-  void languageChange(value) {
+  void _languageChange(value) {
     switch (value) {
       case 'ru':
         S.load(const Locale('ru', 'RU'));
@@ -60,7 +60,7 @@ class _MyHomePageState extends State<HomeScreen> {
                       child: Text(S.of(context).russian),
                     )
                   ],
-                  onChanged: languageChange,
+                  onChanged: _languageChange,
                 )
               ],
             ),

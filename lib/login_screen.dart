@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:lessons2/home_screen.dart';
 import 'generated/l10n.dart';
 
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
@@ -11,10 +10,16 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
   final _loginController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  final formKey = GlobalKey<FormState>();
+  @override
+  void dispose() {
+    _loginController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   String? _loginValidator(String? value) {
     if (value == null || value.isEmpty || value.length < 3) {
@@ -33,11 +38,11 @@ class _LoginScreenState extends State<LoginScreen> {
   void _onLoginPressed() {
     FocusScope.of(context).unfocus();
 
-    final isValidated = formKey.currentState?.validate() ?? false;
+    final isValidated = _formKey.currentState?.validate() ?? false;
 
     if (!isValidated) return;
 
-    formKey.currentState?.save();
+    _formKey.currentState?.save();
 
     if (_loginController.text == 'qwerty' &&
         _passwordController.text == '123456ab') {
@@ -82,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             Form(
-              key: formKey,
+              key: _formKey,
               child: Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -98,8 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onChanged: _onValueChanged,
                       decoration: InputDecoration(
                         label: Text(S.of(context).login),
-                        counter: Text(
-                            '${_loginController.text.length}/8'),
+                        counter: Text('${_loginController.text.length}/8'),
                       ),
                     ),
                     TextFormField(
@@ -110,8 +114,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       obscureText: true,
                       decoration: InputDecoration(
                           label: Text(S.of(context).password),
-                          counter: Text(
-                              '${_passwordController.text.length}/16')),
+                          counter:
+                              Text('${_passwordController.text.length}/16')),
                     ),
                   ],
                 ),
