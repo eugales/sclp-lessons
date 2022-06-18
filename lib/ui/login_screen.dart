@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:lessons2/home_screen.dart';
-import 'generated/l10n.dart';
+import 'package:lessons2/ui/home_screen.dart';
+import 'package:lessons2/generated/l10n.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'generated/l10n.dart';
+import 'package:lessons2/generated/l10n.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

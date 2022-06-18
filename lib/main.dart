@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:lessons2/login_screen.dart';
+import 'package:lessons2/ui/login_screen.dart';
 import 'generated/l10n.dart';
 
 void main() {
