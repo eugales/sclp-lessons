@@ -209,6 +209,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Find character`
+  String get findCharacter {
+    return Intl.message(
+      'Find character',
+      name: 'findCharacter',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Total characters`
+  String get totalCharacters {
+    return Intl.message(
+      'Total characters',
+      name: 'totalCharacters',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Alive`
+  String get alive {
+    return Intl.message(
+      'Alive',
+      name: 'alive',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dead`
+  String get dead {
+    return Intl.message(
+      'Dead',
+      name: 'dead',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Human`
+  String get human {
+    return Intl.message(
+      'Human',
+      name: 'human',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Male`
+  String get male {
+    return Intl.message(
+      'Male',
+      name: 'male',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Female`
+  String get female {
+    return Intl.message(
+      'Female',
+      name: 'female',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -14,5 +14,12 @@
   "signIn": "Sign in",
   "language": "Language",
   "english": "English",
-  "russian": "Russian"
+  "russian": "Russian",
+  "findCharacter": "Find character",
+  "totalCharacters": "Total characters",
+  "alive": "Alive",
+  "dead": "Dead",
+  "human": "Human",
+  "male": "Male",
+  "female": "Female"
 }
