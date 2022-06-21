@@ -6,7 +6,7 @@ import 'package:lessons2/constants/app_assets.dart';
 class Character {
   String firstName;
   String lastName;
-  String avatar;
+  String? avatar;
   String kind;
   String sex;
   String status;
@@ -14,12 +14,11 @@ class Character {
   Character({
     required this.firstName,
     required this.lastName,
-    String? avatar,
+    required this.avatar,
     required this.kind,
     required this.sex,
     required this.status,
-  }) : avatar =
-            avatar == null || avatar == '' ? AppAssets.images.noAvatar : avatar;
+  });
 
   String get fullName => "$firstName $lastName";
 
@@ -58,7 +57,7 @@ class Character {
     return Character(
       firstName: map['firstName'] ?? '',
       lastName: map['lastName'] ?? '',
-      avatar: map['avatar'] ?? AssetImage(AppAssets.images.noAvatar),
+      avatar: map['avatar'],
       kind: map['kind'] ?? '',
       sex: map['sex'] ?? '',
       status: map['status'] ?? '',

@@ -25,17 +25,6 @@ class _CharactersScreenState extends State<CharactersScreen> {
   final List<Character> _characters = Stub.stubCharacters;
   var isListView = true;
 
-
-  @override
-  void initState() {
-   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.yellow.shade600,
-      statusBarBrightness: Brightness.light,
-      statusBarIconBrightness: Brightness.dark,
-    ));
-    super.initState();
-  }
-
   @override
   void dispose() {
     _searchController.dispose();
@@ -49,12 +38,8 @@ class _CharactersScreenState extends State<CharactersScreen> {
       appBar: AppBar(
         // elevation: 0,
         toolbarHeight: 100,
-        automaticallyImplyLeading: false,
         title: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            
             SearchField(controller: _searchController),
             const SizedBox(height: 4),
             Row(
@@ -94,8 +79,8 @@ class _CharactersScreenState extends State<CharactersScreen> {
         ),
       ),
       body: isListView
-          ? _ListView(characters: _characters)
-          : _GridView(characters: _characters),
+          ? _ListView(_characters)
+          : _GridView(_characters),
     );
   }
 }

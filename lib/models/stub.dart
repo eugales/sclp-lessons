@@ -14,7 +14,7 @@ class Stub {
     Character(
       firstName: 'Директор',
       lastName: 'Агентства',
-      avatar: '',
+      avatar: 'https://via.placeholder.com/150',
       kind: 'human',
       sex: 'male',
       status: 'alive',

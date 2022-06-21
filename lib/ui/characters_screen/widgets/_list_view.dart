@@ -1,9 +1,9 @@
 part of '../characters_screen.dart';
 
 class _ListView extends StatelessWidget {
-  _ListView({
+  _ListView(
+    this.characters, {
     Key? key,
-    required this.characters,
   }) : super(key: key);
 
   List<Character> characters;
@@ -13,7 +13,7 @@ class _ListView extends StatelessWidget {
     return ListView.separated(
       itemBuilder: (context, index) {
         return InkWell(
-          child: CharacterListTile(character: characters[index]),
+          child: CharacterListTile(characters[index]),
           onTap: () {},
         );
       },

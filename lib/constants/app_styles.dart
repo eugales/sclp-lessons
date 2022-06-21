@@ -38,7 +38,9 @@ class AppStyles {
       backgroundColor: AppColors.dark,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: AppColors.dark,
-        statusBarIconBrightness: Brightness.light
+        statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.dark
+
       ),
     ),
     backgroundColor: AppColors.dark,
@@ -61,7 +63,8 @@ class AppStyles {
       backgroundColor: AppColors.light,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: AppColors.light,
-        statusBarIconBrightness: Brightness.dark
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.light
       ),
     ),
     backgroundColor: AppColors.light,
