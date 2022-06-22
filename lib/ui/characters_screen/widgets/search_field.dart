@@ -4,9 +4,9 @@ import 'package:lessons2/constants/app_styles.dart';
 import 'package:lessons2/generated/l10n.dart';
 
 class SearchField extends StatelessWidget {
-  SearchField({Key? key, required this.controller}) : super(key: key);
+  const SearchField({Key? key, required this.controller}) : super(key: key);
 
-  TextEditingController controller;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -15,24 +15,23 @@ class SearchField extends StatelessWidget {
       controller: controller,
       decoration: InputDecoration(
         filled: true,
-        fillColor: AppColors.grey1,
+        fillColor: AppColors.searchFieldBackground,
         contentPadding: EdgeInsets.zero,
-        prefixIcon: const Icon(Icons.search, color: AppColors.grey4),
+        prefixIcon:
+            const Icon(Icons.search, color: AppColors.searchFieldPrimary),
         suffixIcon: Container(
           margin: const EdgeInsets.symmetric(vertical: 12),
           decoration: const BoxDecoration(
             border: Border(
-              left: BorderSide(color: AppColors.grey2),
+              left: BorderSide(color: AppColors.searchFieldSecondary),
             ),
           ),
-          child: GestureDetector(
+          child: InkWell(
+            onTap: () {},
             child: const Icon(
               Icons.filter_alt,
-              color: AppColors.grey4,
+              color: AppColors.searchFieldPrimary,
             ),
-            onTap: () {
-              FocusScope.of(context).unfocus();
-            },
           ),
         ),
         border: OutlineInputBorder(
@@ -41,7 +40,7 @@ class SearchField extends StatelessWidget {
         ),
         label: Text(
           S.of(context).findCharacter,
-          style: AppStyles.s16w400.copyWith(color: AppColors.grey2),
+          style: AppStyles.s16w400.copyWith(color: AppColors.searchFieldText),
         ),
         floatingLabelBehavior: FloatingLabelBehavior.never,
       ),

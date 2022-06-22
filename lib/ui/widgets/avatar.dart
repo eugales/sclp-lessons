@@ -20,7 +20,9 @@ class Avatar extends StatelessWidget {
     return Container(
         margin: margin,
         decoration: BoxDecoration(
-            shape: BoxShape.circle, border: border, color: Colors.amber),
+          shape: BoxShape.circle,
+          border: border,
+        ),
         child: ClipRRect(
           borderRadius: BorderRadius.all(radius),
           child: Image(

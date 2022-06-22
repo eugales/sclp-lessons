@@ -9,15 +9,15 @@ class Stub {
       avatar: null,
       kind: 'human',
       sex: 'male',
-      status: 'dead',
+      status: false,
     ),
     Character(
       firstName: 'Директор',
       lastName: 'Агентства',
-      avatar: 'https://via.placeholder.com/150',
+      avatar: 'https://via.placeholder.com/74',
       kind: 'human',
       sex: 'male',
-      status: 'alive',
+      status: true,
     ),
     Character(
       firstName: 'Морти',
@@ -25,7 +25,7 @@ class Stub {
       avatar: '',
       kind: 'human',
       sex: 'male',
-      status: 'alive',
+      status: true,
     ),
     Character(
       firstName: 'Саммер',
@@ -33,7 +33,7 @@ class Stub {
       avatar: '',
       kind: 'human',
       sex: 'male',
-      status: 'dead',
+      status: true,
     ),
     Character(
       firstName: 'Альберт',
@@ -41,7 +41,7 @@ class Stub {
       avatar: '',
       kind: 'human',
       sex: 'male',
-      status: 'alive',
+      status: true,
     ),
     Character(
       firstName: 'Алан',
@@ -49,7 +49,7 @@ class Stub {
       avatar: '',
       kind: 'human',
       sex: 'male',
-      status: 'alive',
+      status: true,
     ),
   ];
 }

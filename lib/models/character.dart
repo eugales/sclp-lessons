@@ -1,15 +1,12 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-import 'package:lessons2/constants/app_assets.dart';
-
 class Character {
   String firstName;
   String lastName;
   String? avatar;
   String kind;
   String sex;
-  String status;
+  bool status;
 
   Character({
     required this.firstName,
@@ -30,7 +27,7 @@ class Character {
     String? avatar,
     String? kind,
     String? sex,
-    String? status,
+    bool? status,
   }) {
     return Character(
       firstName: firstName ?? this.firstName,
