@@ -17,3 +17,7 @@ https://user-images.githubusercontent.com/29410722/173199540-ff7f1d2d-aa3d-4cab-
 
 ## lesson5
 https://user-images.githubusercontent.com/29410722/174506205-77c943b5-d893-4187-b229-20a4841685c3.mov
+
+## lesson6
+https://user-images.githubusercontent.com/29410722/175916839-9a4aaaf1-a674-4e4e-9b11-19731e853aae.mov
+
