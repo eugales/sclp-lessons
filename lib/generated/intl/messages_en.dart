@@ -24,10 +24,15 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "alive": MessageLookupByLibrary.simpleMessage("Alive"),
         "auth": MessageLookupByLibrary.simpleMessage("Authorization"),
+        "characters": MessageLookupByLibrary.simpleMessage("Characters"),
         "close": MessageLookupByLibrary.simpleMessage("Close"),
         "counterValue": MessageLookupByLibrary.simpleMessage("Couter value"),
+        "createAccount": MessageLookupByLibrary.simpleMessage("Create"),
         "dead": MessageLookupByLibrary.simpleMessage("Dead"),
+        "dontHaveAccount":
+            MessageLookupByLibrary.simpleMessage("Do not you have account?"),
         "english": MessageLookupByLibrary.simpleMessage("English"),
+        "error": MessageLookupByLibrary.simpleMessage("Error"),
         "female": MessageLookupByLibrary.simpleMessage("Female"),
         "findCharacter": MessageLookupByLibrary.simpleMessage("Find character"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
@@ -45,11 +50,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
+        "ok": MessageLookupByLibrary.simpleMessage("Ок"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "russian": MessageLookupByLibrary.simpleMessage("Russian"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "signIn": MessageLookupByLibrary.simpleMessage("Sign in"),
         "totalCharacters":
             MessageLookupByLibrary.simpleMessage("Total characters"),
-        "tryAgain": MessageLookupByLibrary.simpleMessage("Try again")
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
+        "typedWrongLoginAndPassword": MessageLookupByLibrary.simpleMessage(
+            "You typed wrong login and password")
       };
 }

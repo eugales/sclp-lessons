@@ -11,7 +11,7 @@
   "inputErrorPasswordIsShort": "Пароль должен содержать не менее 8 символов",
   "tryAgain": "Пропробуйте снова",
   "close": "Закрыть",
-  "signIn": "Вход",
+  "signIn": "Войти",
   "language": "Язык",
   "english": "Английский",
   "russian": "Русский",
@@ -21,5 +21,12 @@
   "dead": "Мертвый",
   "human": "Человек",
   "male": "Мужчина",
-  "female": "Женщина"
+  "female": "Женщина",
+  "dontHaveAccount": "У вас еще нет аккаунта",
+  "createAccount": "Создать",
+  "error":"Ошибка",
+  "typedWrongLoginAndPassword": "Введен неверные логин или пароль",
+  "ok": "Ок",
+  "characters": "Персонажи",
+  "settings": "Настройки"
 }

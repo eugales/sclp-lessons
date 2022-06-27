@@ -24,11 +24,16 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "alive": MessageLookupByLibrary.simpleMessage("Живой"),
         "auth": MessageLookupByLibrary.simpleMessage("Авторизация"),
+        "characters": MessageLookupByLibrary.simpleMessage("Персонажи"),
         "close": MessageLookupByLibrary.simpleMessage("Закрыть"),
         "counterValue":
             MessageLookupByLibrary.simpleMessage("Значение счетчика"),
+        "createAccount": MessageLookupByLibrary.simpleMessage("Создать"),
         "dead": MessageLookupByLibrary.simpleMessage("Мертвый"),
+        "dontHaveAccount":
+            MessageLookupByLibrary.simpleMessage("У вас еще нет аккаунта"),
         "english": MessageLookupByLibrary.simpleMessage("Английский"),
+        "error": MessageLookupByLibrary.simpleMessage("Ошибка"),
         "female": MessageLookupByLibrary.simpleMessage("Женщина"),
         "findCharacter":
             MessageLookupByLibrary.simpleMessage("Найти персонажа"),
@@ -47,11 +52,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "language": MessageLookupByLibrary.simpleMessage("Язык"),
         "login": MessageLookupByLibrary.simpleMessage("Логин"),
         "male": MessageLookupByLibrary.simpleMessage("Мужчина"),
+        "ok": MessageLookupByLibrary.simpleMessage("Ок"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "russian": MessageLookupByLibrary.simpleMessage("Русский"),
-        "signIn": MessageLookupByLibrary.simpleMessage("Вход"),
+        "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
+        "signIn": MessageLookupByLibrary.simpleMessage("Войти"),
         "totalCharacters":
             MessageLookupByLibrary.simpleMessage("Всего персонажей"),
-        "tryAgain": MessageLookupByLibrary.simpleMessage("Пропробуйте снова")
+        "tryAgain": MessageLookupByLibrary.simpleMessage("Пропробуйте снова"),
+        "typedWrongLoginAndPassword": MessageLookupByLibrary.simpleMessage(
+            "Введен неверные логин или пароль")
       };
 }

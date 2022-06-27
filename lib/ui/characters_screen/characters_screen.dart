@@ -6,6 +6,7 @@ import 'package:lessons2/ui/characters_screen/widgets/character_grid_tile.dart';
 import 'package:lessons2/ui/characters_screen/widgets/character_list_tile.dart';
 import 'package:lessons2/ui/characters_screen/widgets/total_characters_label.dart';
 import 'package:lessons2/ui/characters_screen/widgets/search_field.dart';
+import 'package:lessons2/ui/widgets/app_nav_bar.dart';
 
 part 'widgets/_grid_view.dart';
 part 'widgets/_list_view.dart';
@@ -35,7 +36,6 @@ class _CharactersScreenState extends State<CharactersScreen> {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: AppBar(
-        // key: widget.key,
         elevation: 0,
         toolbarHeight: appBarHeight,
         title: Column(
@@ -53,6 +53,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
         ),
       ),
       body: _isListView ? _ListView(_characters) : _GridView(_characters),
+      bottomNavigationBar: AppNavBar(key: UniqueKey(), currentIndex: 0),
     );
   }
 

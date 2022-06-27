@@ -16,6 +16,9 @@ class AppStyles {
     color: AppColors.title,
   );
 
+  static const s14w400 = TextStyle(
+      fontSize: 14, fontWeight: FontWeight.w400, color: AppColors.title);
+
   static const s14w500 = TextStyle(
       fontSize: 14, fontWeight: FontWeight.w500, color: AppColors.title);
 
@@ -23,7 +26,7 @@ class AppStyles {
   static const s16w400 = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w400,
-    color: AppColors.title,
+    // color: AppColors.title,
   );
 
   // title
@@ -33,15 +36,24 @@ class AppStyles {
     color: AppColors.title,
   );
 
+  static const s20w500 = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color: AppColors.title,
+  );
+
   static final dark = ThemeData.dark().copyWith(
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.dark,
+      backgroundColor: AppColors.backgroundDark,
       systemOverlayStyle: SystemUiOverlayStyle(
           statusBarColor: AppColors.dark,
-          statusBarIconBrightness: Brightness.light,
+          // statusBarIconBrightness: Brightness.light,
           statusBarBrightness: Brightness.dark),
     ),
     backgroundColor: AppColors.dark,
+    bottomNavigationBarTheme:  const BottomNavigationBarThemeData(
+        backgroundColor: AppColors.dark,
+        selectedItemColor: AppColors.tabBarSelectedDark),
     textTheme: TextTheme(
       titleLarge: s16w500.copyWith(
         color: AppColors.light,
@@ -58,13 +70,21 @@ class AppStyles {
 
   static final light = ThemeData.light().copyWith(
     appBarTheme: const AppBarTheme(
-      backgroundColor: AppColors.light,
+      backgroundColor: AppColors.backgroundLight,
+      titleTextStyle: AppStyles.s16w500,
       systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: AppColors.light,
-          statusBarIconBrightness: Brightness.dark,
-          statusBarBrightness: Brightness.light),
+        statusBarColor: AppColors.dark,
+        statusBarIconBrightness: Brightness.dark,
+        statusBarBrightness: Brightness.dark,
+      ),
     ),
-    backgroundColor: AppColors.light,
+    backgroundColor: AppColors.backgroundLight,
+    bottomAppBarColor: AppColors.light,
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.light,
+      selectedItemColor: AppColors.primary,
+      selectedLabelStyle: s12w400.copyWith(color: AppColors.primary),
+    ),
     textTheme: TextTheme(
       titleLarge: s16w500.copyWith(
         color: AppColors.title,

@@ -21,5 +21,12 @@
   "dead": "Dead",
   "human": "Human",
   "male": "Male",
-  "female": "Female"
+  "female": "Female",
+  "dontHaveAccount": "Do not you have account?",
+  "createAccount": "Create",
+  "error": "Error",
+  "typedWrongLoginAndPassword": "You typed wrong login and password",
+  "ok": "Ок",
+  "characters": "Characters",
+  "settings": "Settings"
 }
