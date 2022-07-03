@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lessons2/constants/app_assets.dart';
 import 'package:lessons2/constants/app_colors.dart';
+import 'package:lessons2/generated/l10n.dart';
+import 'package:lessons2/repo/repo_settings.dart';
 import 'package:lessons2/ui/login/login_screen.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -18,16 +21,24 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
-          statusBarColor: AppColors.dark,
-          statusBarIconBrightness: Brightness.dark),
+        statusBarColor: AppColors.dark,
+        statusBarIconBrightness: Brightness.dark,
+      ),
     );
-    Future.delayed(
-      const Duration(seconds: 2),
-    ).whenComplete(() {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => nextRoute),
-      );
+
+    final repoSettings = Provider.of<RepoSettings>(context, listen: false);
+    repoSettings.init().whenComplete(() async {
+      var defaultLocale = const Locale('ru', 'RU');
+      final locale = await repoSettings.readLocale();
+      if (locale == 'en') {
+        defaultLocale = const Locale('en');
+      }
+      S.load(defaultLocale).whenComplete(() {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => nextRoute),
+        );
+      });
     });
     super.initState();
   }

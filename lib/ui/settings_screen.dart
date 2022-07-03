@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:lessons2/constants/app_styles.dart';
 import 'package:lessons2/generated/l10n.dart';
+import 'package:lessons2/repo/repo_settings.dart';
 import 'package:lessons2/ui/widgets/app_nav_bar.dart';
+import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -18,7 +20,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Text(S.current.russian, style: AppStyles.s12w400),
     ),
     DropdownMenuItem(
-      value: 'en_EN',
+      value: 'en',
       child: Text(S.current.english, style: AppStyles.s12w400),
     ),
   ];
@@ -27,7 +29,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   void initState() {
-    _language = Intl.getCurrentLocale().characters.string;
+    _language = Intl.getCurrentLocale();
     super.initState();
   }
 
@@ -38,10 +40,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
         _language = value;
         break;
       default:
-        S.load(const Locale('en', 'EN'));
+        S.load(const Locale('en'));
         _language = value;
     }
     setState(() {});
+
+    final repoSettings = Provider.of<RepoSettings>(context, listen: false);
+    repoSettings.saveLocale(value);
   }
 
   @override

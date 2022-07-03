@@ -4,15 +4,21 @@ import 'package:lessons2/constants/app_styles.dart';
 import 'package:lessons2/generated/l10n.dart';
 
 class SearchField extends StatelessWidget {
-  const SearchField({Key? key, required this.controller}) : super(key: key);
+  const SearchField({
+    Key? key,
+    required this.controller,
+    required this.onChanged,
+  }) : super(key: key);
 
   final TextEditingController controller;
+  final ValueChanged<String>? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      style: AppStyles.s16w400,
       controller: controller,
+      onChanged: onChanged,
+      style: AppStyles.s16w400,
       decoration: InputDecoration(
         filled: true,
         fillColor: AppColors.searchFieldBackground,
