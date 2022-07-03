@@ -59,7 +59,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("${S.of(context).language}: ", style: AppStyles.s14w400  ),
+                Text("${S.of(context).language}: ", style: AppStyles.s14w400),
                 DropdownButton(
                   value: _language,
                   items: dropdowns,

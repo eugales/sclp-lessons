@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:lessons2/constants/app_assets.dart';
 import 'package:lessons2/constants/app_colors.dart';
 import 'package:lessons2/constants/app_styles.dart';
 import 'package:lessons2/ui/characters_screen/characters_screen.dart';
 import 'package:lessons2/generated/l10n.dart';
-import 'package:lessons2/ui/login/widgets/custom_alert_dialog.dart';
-import 'package:lessons2/ui/login/widgets/custom_text_form_field.dart';
-import 'package:lessons2/ui/widgets/dark_button.dart';
+import 'package:lessons2/ui/login/widgets/login_screen_alert_dialog.dart';
+import 'package:lessons2/ui/login/widgets/login_screen_text_fields.dart';
+import 'package:lessons2/ui/widgets/app_button.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -17,20 +16,60 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
+  bool _isPasswordObscured = true;
   final _nextRoute = const CharactersScreen();
 
-  final _formKey = GlobalKey<FormState>();
   String? _login;
   String? _password;
 
-  bool _isPasswordObscured = true;
+  String? _loginValidator(String? value) {
+    if (value == null || value.isEmpty || value.length < 3) {
+      return S.of(context).inputErrorLoginIsShort;
+    }
+    return null;
+  }
+
+  String? _passwordValidator(String? value) {
+    if (value == null || value.isEmpty || value.length < 8) {
+      return S.of(context).inputErrorPasswordIsShort;
+    }
+    return null;
+  }
+
+  void _onLoginPressed() {
+    FocusScope.of(context).unfocus();
+
+    final isValidated = _formKey.currentState?.validate() ?? false;
+
+    if (!isValidated) return;
+
+    _formKey.currentState?.save();
+
+    if (_login == 'qwerty' && _password == '123456ab') {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => _nextRoute,
+        ),
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return const LoginScreenAlertDialog();
+        },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Padding(
         padding: const EdgeInsets.all(28.0),
         child: SingleChildScrollView(
+          reverse: true,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -49,14 +88,10 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    CustomTextFormField(
+                    LoginScreenTextFields.login(
+                      S.of(context).login,
                       onSaved: (value) => _login = value,
-                      labelText: S.of(context).login,
-                      maxLength: 8,
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: SvgPicture.asset(AppAssets.svg.account),
-                      ),
+                      validator: _loginValidator,
                     ),
                     const SizedBox(height: 10),
                     Text(
@@ -67,16 +102,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    CustomTextFormField(
+                    LoginScreenTextFields.password(
+                      S.of(context).password,
                       onSaved: (value) => _password = value,
-                      labelText: S.of(context).password,
-                      prefixIcon: Padding(
-                        padding: const EdgeInsets.all(16),
-                        child: SvgPicture.asset(AppAssets.svg.password),
-                      ),
-                      maxLength: 16,
+                      validator: _passwordValidator,
                       obscureText: _isPasswordObscured,
-                      sufix: InkWell(
+                      suffix: InkWell(
                         child: _isPasswordObscured
                             ? const Icon(
                                 Icons.visibility_outlined,
@@ -97,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-              DarkButton(
+              AppButton.dark(
                 S.of(context).signIn,
                 onTap: _onLoginPressed,
               ),
@@ -125,44 +156,5 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
-  }
-
-  // String? _loginValidator(String? value) {
-  //   if (value == null || value.isEmpty || value.length < 3) {
-  //     return S.of(context).inputErrorLoginIsShort;
-  //   }
-  //   return null;
-  // }
-
-  // String? _passwordValidator(String? value) {
-  //   if (value == null || value.isEmpty || value.length < 8) {
-  //     return S.of(context).inputErrorPasswordIsShort;
-  //   }
-  //   return null;
-  // }
-
-  void _onLoginPressed() {
-    FocusScope.of(context).unfocus();
-
-    final isValidated = _formKey.currentState?.validate() ?? false;
-
-    if (!isValidated) return;
-
-    _formKey.currentState?.save();
-
-    if (_login == 'qwerty' && _password == '123456ab') {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => _nextRoute,
-        ),
-      );
-    } else {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return const CustomAlertDialog();
-        },
-      );
-    }
   }
 }

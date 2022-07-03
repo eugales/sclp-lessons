@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:lessons2/constants/app_styles.dart';
-import 'package:lessons2/ui/characters_screen/characters_screen.dart';
 import 'package:lessons2/ui/splash_screen.dart';
 import 'generated/l10n.dart';
 
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Rick and Morty',
       theme: AppStyles.light,
       localizationsDelegates: const [
         S.delegate,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:lessons2/constants/app_styles.dart';
 import 'package:lessons2/generated/l10n.dart';
-import 'package:lessons2/ui/widgets/light_button.dart';
+import 'package:lessons2/ui/widgets/app_button.dart';
 
-class CustomAlertDialog extends StatelessWidget {
-  const CustomAlertDialog({Key? key}) : super(key: key);
+class LoginScreenAlertDialog extends StatelessWidget {
+  const LoginScreenAlertDialog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class CustomAlertDialog extends StatelessWidget {
         style: AppStyles.s14w400.copyWith(letterSpacing: 0.25),
       ),
       actions: [
-        LightButton(
+        AppButton.light(
           S.of(context).ok,
           onTap: () => Navigator.of(context).pop(),
         ),
