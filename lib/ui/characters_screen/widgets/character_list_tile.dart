@@ -21,7 +21,7 @@ class CharacterListTile extends StatelessWidget {
             dimension: size.width * 0.197,
             child: Avatar(
               key: key,
-              character.avatar,
+              character.image,
               radius: const Radius.circular(40),
             ),
           ),
@@ -37,7 +37,7 @@ class CharacterListTile extends StatelessWidget {
                     ?.copyWith(color: _statusColor(character.status)),
               ),
               const SizedBox(height: 6),
-              Text(character.fullName,
+              Text(character.name!,
                   style: Theme.of(context).textTheme.titleLarge),
               Text(kindAndSexLabel,
                   style: Theme.of(context).textTheme.titleSmall),
@@ -48,10 +48,10 @@ class CharacterListTile extends StatelessWidget {
     );
   }
 
-  Color _statusColor(bool status) {
-    return status ? AppColors.statusAlive : AppColors.statusDead;
+  Color _statusColor(String? status) {
+    return status == 'Alive' ? AppColors.statusAlive : AppColors.statusDead;
   }
 
   String get kindAndSexLabel =>
-      "${Localization.kindLabel(character.kind)}, ${Localization.sexLabel(character.sex)}";
+      "${Localization.kindLabel(character.species)}, ${Localization.sexLabel(character.gender)}";
 }

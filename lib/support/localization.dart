@@ -1,8 +1,8 @@
 import 'package:lessons2/generated/l10n.dart';
 
 class Localization {
-  static String statusLabel(bool status) {
-    return status ? S.current.alive : S.current.dead;
+  static String statusLabel(String? status) {
+    return status == 'alive' ? S.current.alive : S.current.dead;
   }
 
   static String kindLabel(String? kind) {

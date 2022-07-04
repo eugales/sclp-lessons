@@ -1,9 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:lessons2/models/character.dart';
+import 'package:lessons2/repo/repo_characters.dart';
 
 class CharactersListVModel with ChangeNotifier {
-  late List<Character> filteredList = _charactersList;
+  CharactersListVModel({required this.repo}){
+    init();
+  }
+
+  late List<Character> filteredList = <Character>[];
   var isListView = true;
+  var isLoading = true;
+  String? errorMessage;
+  final RepoCharacters repo;
+
+  var _charactersList = <Character>[];
+
+  void init() {
+    repo.readCharacters().then((result) {
+      errorMessage = result.errorMessage;
+      _charactersList = result.charactersList ?? <Character>[];
+      filteredList = _charactersList;
+      isLoading = false;
+      notifyListeners();
+    });
+  }
 
   void switchView() {
     isListView = !isListView;
@@ -12,64 +32,8 @@ class CharactersListVModel with ChangeNotifier {
 
   void filter(String query) {
     filteredList = _charactersList.where((character) {
-      return character.fullName.toLowerCase().contains(query);
+      return character.name?.toLowerCase().contains(query) ?? false;
     }).toList();
     notifyListeners();
   }
-
-  final _charactersList = [
-    ..._list,
-    ..._list,
-  ];
 }
-
-final _list = [
-  Character(
-    firstName: 'Рик',
-    lastName: 'Cанчез',
-    avatar: null,
-    kind: 'human',
-    sex: 'male',
-    status: false,
-  ),
-  Character(
-    firstName: 'Директор',
-    lastName: 'Агентства',
-    avatar: 'https://via.placeholder.com/74',
-    kind: 'human',
-    sex: 'male',
-    status: true,
-  ),
-  Character(
-    firstName: 'Морти',
-    lastName: 'Смит',
-    avatar: '',
-    kind: 'human',
-    sex: 'male',
-    status: true,
-  ),
-  Character(
-    firstName: 'Саммер',
-    lastName: 'Смит',
-    avatar: '',
-    kind: 'human',
-    sex: 'male',
-    status: true,
-  ),
-  Character(
-    firstName: 'Альберт',
-    lastName: 'Эйнштейн',
-    avatar: '',
-    kind: 'human',
-    sex: 'male',
-    status: true,
-  ),
-  Character(
-    firstName: 'Алан',
-    lastName: 'Райлс',
-    avatar: '',
-    kind: 'human',
-    sex: 'male',
-    status: true,
-  ),
-];

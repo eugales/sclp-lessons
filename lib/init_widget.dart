@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lessons2/repo/repo_characters.dart';
 import 'package:lessons2/repo/repo_settings.dart';
 import 'package:provider/provider.dart';
 
@@ -11,9 +12,8 @@ class InitWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        Provider(
-          create: (context) => RepoSettings(),
-        )
+        Provider(create: (context) => RepoSettings()),
+        Provider(create: (context) => RepoCharacters())
       ],
       child: child,
     );

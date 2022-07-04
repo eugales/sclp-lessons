@@ -16,12 +16,14 @@ class CharacterGridTile extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 16),
-        SizedBox.square(
-          dimension: size.width * 0.32,
-          child: Avatar(
-            key: key,
-            character.avatar,
-            radius: const Radius.circular(100),
+        Expanded(
+          child: SizedBox.square(
+            // dimension: size.width * 0.32,
+            child: Avatar(
+              key: key,
+              character.image,
+              radius: const Radius.circular(100),
+            ),
           ),
         ),
         const SizedBox(height: 16),
@@ -33,8 +35,9 @@ class CharacterGridTile extends StatelessWidget {
         ),
         const SizedBox(height: 4),
         Text(
-          character.fullName,
+          character.name!,
           style: Theme.of(context).textTheme.titleLarge,
+          textAlign: TextAlign.center,
         ),
         Text(
           kindAndSexLabel,
@@ -45,10 +48,10 @@ class CharacterGridTile extends StatelessWidget {
     );
   }
 
-  Color _statusColor(bool status) {
-    return status ? AppColors.statusAlive : AppColors.statusDead;
+  Color _statusColor(String? status) {
+    return status == 'Alive' ? AppColors.statusAlive : AppColors.statusDead;
   }
 
   String get kindAndSexLabel =>
-      "${Localization.kindLabel(character.kind)}, ${Localization.sexLabel(character.sex)}";
+      "${Localization.kindLabel(character.species)}, ${Localization.sexLabel(character.gender)}";
 }

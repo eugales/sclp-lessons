@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lessons2/generated/l10n.dart';
 
-import 'package:lessons2/models/stub.dart';
 import 'package:lessons2/models/character.dart';
+import 'package:lessons2/repo/repo_characters.dart';
 import 'package:lessons2/ui/characters_screen/widgets/character_grid_tile.dart';
 import 'package:lessons2/ui/characters_screen/widgets/character_list_tile.dart';
 import 'package:lessons2/ui/characters_screen/widgets/characters_list_vmodel.dart';
@@ -35,7 +36,9 @@ class _CharactersScreenState extends State<CharactersScreen> {
       backgroundColor: Theme.of(context).backgroundColor,
       bottomNavigationBar: AppNavBar(key: UniqueKey(), currentIndex: 0),
       body: ChangeNotifierProvider(
-        create: (context) => CharactersListVModel(),
+        create: (context) => CharactersListVModel(
+          repo: Provider.of<RepoCharacters>(context, listen: false),
+        ),
         builder: (context, _) {
           final characterVModel = context.watch<CharactersListVModel>();
           return SafeArea(
@@ -63,12 +66,44 @@ class _CharactersScreenState extends State<CharactersScreen> {
                     totalCharactersCount: characterVModel.filteredList.length,
                   ),
                 ),
-                Consumer<CharactersListVModel>(
-                  builder: (context, vmodel, child) {
-                    return vmodel.isListView
-                        ? Expanded(child: _ListView(vmodel.filteredList))
-                        : Expanded(child: _GridView(vmodel.filteredList));
-                  },
+                Expanded(
+                  child: Consumer<CharactersListVModel>(
+                    builder: (context, vmodel, child) {
+                      if (vmodel.isLoading) {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [CircularProgressIndicator()],
+                        );
+                      }
+
+                      if (vmodel.errorMessage != null) {
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Flexible(
+                              child: Text(vmodel.errorMessage!),
+                            )
+                          ],
+                        );
+                      }
+
+                      if (vmodel.filteredList.isEmpty) {
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Flexible(
+                                child: Text(
+                              S.of(context).charactersListIsEmpty,
+                            ))
+                          ],
+                        );
+                      }
+
+                      return vmodel.isListView
+                          ? _ListView(vmodel.filteredList)
+                          : _GridView(vmodel.filteredList);
+                    },
+                  ),
                 )
               ],
             ),

@@ -28,5 +28,7 @@
   "typedWrongLoginAndPassword": "You typed wrong login and password",
   "ok": "Ок",
   "characters": "Characters",
-  "settings": "Settings"
+  "settings": "Settings",
+  "somethingWentWrong": "Something went wrong",
+  "charactersListIsEmpty": "Characters list is empty"
 }

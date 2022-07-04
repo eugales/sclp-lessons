@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "alive": MessageLookupByLibrary.simpleMessage("Живой"),
         "auth": MessageLookupByLibrary.simpleMessage("Авторизация"),
         "characters": MessageLookupByLibrary.simpleMessage("Персонажи"),
+        "charactersListIsEmpty":
+            MessageLookupByLibrary.simpleMessage("Список персонажей пуст"),
         "close": MessageLookupByLibrary.simpleMessage("Закрыть"),
         "counterValue":
             MessageLookupByLibrary.simpleMessage("Значение счетчика"),
@@ -57,6 +59,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "russian": MessageLookupByLibrary.simpleMessage("Русский"),
         "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "signIn": MessageLookupByLibrary.simpleMessage("Войти"),
+        "somethingWentWrong":
+            MessageLookupByLibrary.simpleMessage("Что то пошло не так"),
         "totalCharacters":
             MessageLookupByLibrary.simpleMessage("Всего персонажей"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Пропробуйте снова"),
