@@ -1,6 +1,6 @@
 # Solutions for sclp lessons
-
-
+ 
+ 
  
 ## lesson 2
 
@@ -21,3 +21,6 @@ https://user-images.githubusercontent.com/29410722/174506205-77c943b5-d893-4187-
 ## lesson6
 https://user-images.githubusercontent.com/29410722/175916839-9a4aaaf1-a674-4e4e-9b11-19731e853aae.mov
 
+## lesson7
+ 
+https://user-images.githubusercontent.com/29410722/177068446-abbd7879-da4a-48c2-b436-25ce7ded7c83.mov
