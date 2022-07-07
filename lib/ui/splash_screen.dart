@@ -4,7 +4,7 @@ import 'package:lessons2/constants/app_assets.dart';
 import 'package:lessons2/constants/app_colors.dart';
 import 'package:lessons2/generated/l10n.dart';
 import 'package:lessons2/repo/repo_settings.dart';
-import 'package:lessons2/ui/login/login_screen.dart';
+import 'package:lessons2/ui/login_screen/login_screen.dart';
 import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {

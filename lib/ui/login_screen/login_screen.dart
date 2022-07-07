@@ -4,8 +4,8 @@ import 'package:lessons2/constants/app_colors.dart';
 import 'package:lessons2/constants/app_styles.dart';
 import 'package:lessons2/ui/characters_screen/characters_screen.dart';
 import 'package:lessons2/generated/l10n.dart';
-import 'package:lessons2/ui/login/widgets/login_screen_alert_dialog.dart';
-import 'package:lessons2/ui/login/widgets/login_screen_text_fields.dart';
+import 'package:lessons2/ui/login_screen/widgets/login_screen_alert_dialog.dart';
+import 'package:lessons2/ui/login_screen/widgets/login_screen_text_fields.dart';
 import 'package:lessons2/ui/widgets/app_button.dart';
 
 class LoginScreen extends StatefulWidget {
