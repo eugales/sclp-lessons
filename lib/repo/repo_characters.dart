@@ -1,23 +1,22 @@
-import 'dart:convert';
-
+import 'package:dio/dio.dart';
 import 'package:lessons2/generated/l10n.dart';
 import 'package:lessons2/models/character.dart';
-import 'package:http/http.dart' as http;
+import 'package:lessons2/repo/api.dart';
 
 class RepoCharacters {
   Future<ResultRepoCharacters> filterByName(String name) async {
     try {
-      final url = Uri.parse('https://rickandmortyapi.com/api/character/?name=$name');
-      final response = await http.get(url);
-      final data = jsonDecode(response.body);
-      final charactersListJson = data['results'] as List;
+      final response = await Api().dio.get(
+        '/character/',
+        queryParameters: {'name': name},
+      );
+      List charactersListJson = response.data['results'] ?? [];
 
       final charactersList = charactersListJson.map((character) {
         return Character.fromMap(character);
       }).toList();
       return ResultRepoCharacters(charactersList: charactersList);
     } catch (e) {
-      print('Error: $e');
       return ResultRepoCharacters(errorMessage: S.current.somethingWentWrong);
     }
   }
