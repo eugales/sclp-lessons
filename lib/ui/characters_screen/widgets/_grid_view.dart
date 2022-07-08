@@ -12,7 +12,7 @@ class _GridView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 2,
-      childAspectRatio: 0.9,
+      childAspectRatio: 0.8,
       children: characters.map((character) {
         return InkWell(
           child: CharacterGridTile(

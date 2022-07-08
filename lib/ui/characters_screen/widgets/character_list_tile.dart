@@ -26,22 +26,28 @@ class CharacterListTile extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 16),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                Localization.statusLabel(character.status).toUpperCase(),
-                style: Theme.of(context)
-                    .textTheme
-                    .titleMedium
-                    ?.copyWith(color: _statusColor(character.status)),
-              ),
-              const SizedBox(height: 6),
-              Text(character.name!,
-                  style: Theme.of(context).textTheme.titleLarge),
-              Text(kindAndSexLabel,
-                  style: Theme.of(context).textTheme.titleSmall),
-            ],
+          Flexible(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  Localization.statusLabel(character.status).toUpperCase(),
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium
+                      ?.copyWith(color: _statusColor(character.status)),
+                ),
+                const SizedBox(height: 6),
+                Text(
+                  character.name!,
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
+                Text(
+                  kindAndSexLabel,
+                  style: Theme.of(context).textTheme.titleSmall,
+                ),
+              ],
+            ),
           ),
         ],
       ),
@@ -53,5 +59,5 @@ class CharacterListTile extends StatelessWidget {
   }
 
   String get kindAndSexLabel =>
-      "${Localization.kindLabel(character.species)}, ${Localization.sexLabel(character.gender)}";
+      "${Localization.kindLabel(character.species)} ${Localization.sexLabel(character.gender)}";
 }

@@ -12,7 +12,7 @@ class TotalCharactersLabel extends StatelessWidget {
   }) : super(key: key);
 
   final int totalCharactersCount;
-  final bool isListView;
+  final ValueNotifier<bool> isListView;
   final VoidCallback callback;
 
   @override
@@ -34,15 +34,20 @@ class TotalCharactersLabel extends StatelessWidget {
           },
           child: Padding(
             padding: const EdgeInsets.all(8),
-            child: isListView
-                ? const Icon(
-                    Icons.list,
-                    color: AppColors.secondaryDark,
-                  )
-                : const Icon(
-                    Icons.grid_view,
-                    color: AppColors.secondaryDark,
-                  ),
+            child: ValueListenableBuilder<bool>(
+              valueListenable: isListView,
+              builder: (context, isListViewMode, _) {
+                return isListViewMode
+                    ? const Icon(
+                        Icons.list,
+                        color: AppColors.secondaryDark,
+                      )
+                    : const Icon(
+                        Icons.grid_view,
+                        color: AppColors.secondaryDark,
+                      );
+              }
+            ),
           ),
         )
       ],

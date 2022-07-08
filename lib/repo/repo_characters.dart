@@ -5,9 +5,9 @@ import 'package:lessons2/models/character.dart';
 import 'package:http/http.dart' as http;
 
 class RepoCharacters {
-  Future<ResultRepoCharacters> readCharacters() async {
+  Future<ResultRepoCharacters> filterByName(String name) async {
     try {
-      final url = Uri.parse('https://rickandmortyapi.com/api/character');
+      final url = Uri.parse('https://rickandmortyapi.com/api/character/?name=$name');
       final response = await http.get(url);
       final data = jsonDecode(response.body);
       final charactersListJson = data['results'] as List;
