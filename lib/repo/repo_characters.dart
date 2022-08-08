@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:lessons2/generated/l10n.dart';
 import 'package:lessons2/models/character.dart';
 import 'package:lessons2/repo/api.dart';

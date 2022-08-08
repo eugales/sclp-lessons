@@ -14,7 +14,6 @@ class Api {
 }
 
 class _BasicInterceptor implements Interceptor {
-  CancelToken cancelToken = CancelToken();
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) {

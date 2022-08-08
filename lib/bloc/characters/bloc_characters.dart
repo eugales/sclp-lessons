@@ -8,16 +8,15 @@ part 'state_bloc_characters.dart';
 class BlocCharacters extends Bloc<EventBlocCharacters, StateBlocCharacters> {
   BlocCharacters({required this.repo}) : super(StateCharactersInitial()) {
     on<EventCharactersFilterByName>((event, emit) async {
-      emit.call(StateCharactersLoading());
-      // await Future.delayed(const Duration(seconds: 1));
+      emit(StateCharactersLoading());
       final result = await repo.filterByName(event.name);
       if (result.errorMessage != null) {
-        emit.call(StateCharactersError(result.errorMessage!));
+        emit(StateCharactersError(result.errorMessage!));
         return;
       }
-      emit.call(StateCharactersData(result.charactersList!));
+      emit(StateCharactersData(result.charactersList!));
     });
+    
   }
-
   final RepoCharacters repo;
 }
