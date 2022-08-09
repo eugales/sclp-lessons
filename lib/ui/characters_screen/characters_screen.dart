@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lessons2/bloc/characters/bloc_characters.dart';
+import 'package:lessons2/bloc/characters/states.dart';
 import 'package:lessons2/generated/l10n.dart';
 
 import 'package:lessons2/models/character.dart';
@@ -58,48 +59,47 @@ class CharactersScreen extends StatelessWidget {
               Expanded(
                 child: BlocBuilder<BlocCharacters, StateBlocCharacters>(
                   builder: (context, state) {
-                    if (state is StateCharactersLoading) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [CircularProgressIndicator()],
-                      );
-                    }
-
-                    if (state is StateCharactersError) {
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Flexible(
-                            child: Text(state.error),
-                          )
-                        ],
-                      );
-                    }
-
-                    if (state is StateCharactersData) {
-                      if (state.data.isEmpty) {
+                    return state.when(
+                      initial: () => const SizedBox.shrink(),
+                      loading: () {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [CircularProgressIndicator()],
+                        );
+                      },
+                      data: (data) {
+                        if (data.isEmpty) {
+                          return Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Flexible(
+                                  child: Text(
+                                S.of(context).charactersListIsEmpty,
+                              ))
+                            ],
+                          );
+                        } else {
+                          return ValueListenableBuilder<bool>(
+                            valueListenable: isListView,
+                            builder: (context, isListViewMode, _) {
+                              return isListViewMode
+                                  ? _ListView(data)
+                                  : _GridView(data);
+                            },
+                          );
+                        }
+                      },
+                      error: (error) {
                         return Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Flexible(
-                                child: Text(
-                              S.of(context).charactersListIsEmpty,
-                            ))
+                              child: Text(error),
+                            )
                           ],
                         );
-                      } else {
-                        return ValueListenableBuilder<bool>(
-                          valueListenable: isListView,
-                          builder: (context, isListViewMode, _) {
-                            return isListViewMode
-                                ? _ListView(state.data)
-                                : _GridView(state.data);
-                          },
-                        );
-                      }
-                    }
-
-                    return const SizedBox.shrink();
+                      },
+                    );
                   },
                 ),
               )

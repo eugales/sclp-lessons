@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lessons2/models/character.dart';
 import 'package:lessons2/repo/repo_characters.dart';
 
-part 'event_bloc_characters.dart';
-part 'state_bloc_characters.dart';
+import 'states.dart';
+
+part 'events.dart';
 
 class BlocCharacters extends Bloc<EventBlocCharacters, StateBlocCharacters> {
   BlocCharacters({required this.repo}) : super(StateCharactersInitial()) {
@@ -14,7 +14,7 @@ class BlocCharacters extends Bloc<EventBlocCharacters, StateBlocCharacters> {
         emit(StateCharactersError(result.errorMessage!));
         return;
       }
-      emit(StateCharactersData(result.charactersList!));
+      emit(StateCharactersData(data: result.charactersList!));
     });
     
   }

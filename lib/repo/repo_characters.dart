@@ -12,7 +12,7 @@ class RepoCharacters {
       List charactersListJson = response.data['results'] ?? [];
 
       final charactersList = charactersListJson.map((character) {
-        return Character.fromMap(character);
+        return Character.fromJson(character);
       }).toList();
       return ResultRepoCharacters(charactersList: charactersList);
     } catch (e) {
