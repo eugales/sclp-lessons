@@ -30,5 +30,6 @@
   "characters": "Characters",
   "settings": "Settings",
   "somethingWentWrong": "Something went wrong",
-  "charactersListIsEmpty": "Characters list is empty"
+  "charactersListIsEmpty": "Characters list is empty",
+  "location": "Location"
 }

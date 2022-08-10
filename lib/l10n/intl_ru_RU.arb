@@ -30,5 +30,6 @@
   "characters": "Персонажи",
   "settings": "Настройки",
   "somethingWentWrong": "Что то пошло не так",
-  "charactersListIsEmpty": "Список персонажей пуст"
+  "charactersListIsEmpty": "Список персонажей пуст",
+  "location": "Местоположение"
 }

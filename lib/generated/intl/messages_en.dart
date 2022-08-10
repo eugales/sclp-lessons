@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "inputLoginAndPassword":
             MessageLookupByLibrary.simpleMessage("Input login and password"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "location": MessageLookupByLibrary.simpleMessage("Location"),
         "login": MessageLookupByLibrary.simpleMessage("Login"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
         "ok": MessageLookupByLibrary.simpleMessage("Ок"),

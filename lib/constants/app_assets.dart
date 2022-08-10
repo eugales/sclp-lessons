@@ -18,4 +18,5 @@ class _Svg {
   final String password = 'assets/images/svg/password.svg';
   final String characters = 'assets/images/svg/characters.svg';
   final String settings = 'assets/images/svg/settings.svg';
+  final String location = 'assets/images/svg/location.svg';
 }

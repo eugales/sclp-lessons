@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:lessons2/constants/app_assets.dart';
 import 'package:lessons2/constants/app_colors.dart';
-import 'package:lessons2/generated/l10n.dart';
-import 'package:lessons2/ui/characters_screen/characters_screen.dart';
-import 'package:lessons2/ui/settings_screen.dart';
+import 'package:lessons2/support/app_navigation.dart';
 
 class AppNavBar extends StatelessWidget {
   const AppNavBar({Key? key, required this.currentIndex}) : super(key: key);
@@ -16,43 +13,22 @@ class AppNavBar extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: currentIndex,
       selectedItemColor: AppColors.primary,
-      items: [
-        BottomNavigationBarItem(
+      items: AppNavigation.navigations.map((nav) {
+        return BottomNavigationBarItem(
           icon: SvgPicture.asset(
-            AppAssets.svg.characters,
-            color: currentIndex == 0
+            nav.assetName,
+            color: currentIndex == nav.currentIndex
                 ? Theme.of(context).bottomNavigationBarTheme.selectedItemColor
                 : null,
           ),
-          label: S.of(context).characters,
-        ),
-        BottomNavigationBarItem(
-          icon: SvgPicture.asset(
-            AppAssets.svg.settings,
-            color: currentIndex == 1
-                ? Theme.of(context).bottomNavigationBarTheme.selectedItemColor
-                : null,
-          ),
-          label: S.of(context).settings,
-        ),
-      ],
-      onTap: (value) {
-        switch (value) {
-          case 0:
-            Navigator.of(context).pushAndRemoveUntil(
-              _createRoute(const CharactersScreen()),
-              (route) => false,
-            );
-            break;
-          case 1:
-            Navigator.of(context).pushAndRemoveUntil(
-              _createRoute(const SettingsScreen()),
-              (route) => false,
-            );
-            break;
-          default:
-            break;
-        }
+          label: nav.label,
+        );
+      }).toList(),
+      onTap: (currentIndex) {
+        Navigator.of(context).pushAndRemoveUntil(
+          _createRoute(AppNavigation.specificInstance(currentIndex).widget),
+          (route) => false,
+        );
       },
     );
   }

@@ -75,7 +75,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: AppNavBar(key: UniqueKey(), currentIndex: 1),
+      bottomNavigationBar: AppNavBar(key: UniqueKey(), currentIndex: 2),
     );
   }
 }
