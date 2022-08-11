@@ -31,5 +31,8 @@
   "settings": "Настройки",
   "somethingWentWrong": "Что то пошло не так",
   "charactersListIsEmpty": "Список персонажей пуст",
-  "location": "Местоположение"
+  "location": "Местоположение",
+  "findLocation": "Найти местоположение",
+  "totalLocations": "Всего местоположений",
+  "aired": "Премьера"
 }

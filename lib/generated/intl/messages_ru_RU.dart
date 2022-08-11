@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aired": MessageLookupByLibrary.simpleMessage("Премьера"),
         "alive": MessageLookupByLibrary.simpleMessage("Живой"),
         "auth": MessageLookupByLibrary.simpleMessage("Авторизация"),
         "characters": MessageLookupByLibrary.simpleMessage("Персонажи"),
@@ -39,6 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "female": MessageLookupByLibrary.simpleMessage("Женщина"),
         "findCharacter":
             MessageLookupByLibrary.simpleMessage("Найти персонажа"),
+        "findLocation":
+            MessageLookupByLibrary.simpleMessage("Найти местоположение"),
         "home": MessageLookupByLibrary.simpleMessage("Главная"),
         "human": MessageLookupByLibrary.simpleMessage("Человек"),
         "inputErrorCheckLogin":
@@ -64,6 +67,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Что то пошло не так"),
         "totalCharacters":
             MessageLookupByLibrary.simpleMessage("Всего персонажей"),
+        "totalLocations":
+            MessageLookupByLibrary.simpleMessage("Всего местоположений"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Пропробуйте снова"),
         "typedWrongLoginAndPassword": MessageLookupByLibrary.simpleMessage(
             "Введен неверные логин или пароль")

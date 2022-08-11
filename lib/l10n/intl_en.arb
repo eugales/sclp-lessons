@@ -31,5 +31,8 @@
   "settings": "Settings",
   "somethingWentWrong": "Something went wrong",
   "charactersListIsEmpty": "Characters list is empty",
-  "location": "Location"
+  "location": "Location",
+  "findLocation": "Find location",
+  "totalLocations": "Total locations",
+  "aired": "Aired"
 }

@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "aired": MessageLookupByLibrary.simpleMessage("Aired"),
         "alive": MessageLookupByLibrary.simpleMessage("Alive"),
         "auth": MessageLookupByLibrary.simpleMessage("Authorization"),
         "characters": MessageLookupByLibrary.simpleMessage("Characters"),
@@ -37,6 +38,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "error": MessageLookupByLibrary.simpleMessage("Error"),
         "female": MessageLookupByLibrary.simpleMessage("Female"),
         "findCharacter": MessageLookupByLibrary.simpleMessage("Find character"),
+        "findLocation": MessageLookupByLibrary.simpleMessage("Find location"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "human": MessageLookupByLibrary.simpleMessage("Human"),
         "inputErrorCheckLogin":
@@ -62,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Something went wrong"),
         "totalCharacters":
             MessageLookupByLibrary.simpleMessage("Total characters"),
+        "totalLocations":
+            MessageLookupByLibrary.simpleMessage("Total locations"),
         "tryAgain": MessageLookupByLibrary.simpleMessage("Try again"),
         "typedWrongLoginAndPassword": MessageLookupByLibrary.simpleMessage(
             "You typed wrong login and password")

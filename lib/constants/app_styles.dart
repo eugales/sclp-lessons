@@ -36,8 +36,20 @@ class AppStyles {
     color: AppColors.title,
   );
 
+  static const s20w400 = TextStyle(
+    fontSize: 20,
+    fontWeight: FontWeight.w400,
+    color: AppColors.title,
+  );
+
   static const s20w500 = TextStyle(
     fontSize: 20,
+    fontWeight: FontWeight.w500,
+    color: AppColors.title,
+  );
+
+  static const s26w500 = TextStyle(
+    fontSize: 26,
     fontWeight: FontWeight.w500,
     color: AppColors.title,
   );
@@ -70,6 +82,9 @@ class AppStyles {
 
   static final light = ThemeData.light().copyWith(
     appBarTheme: const AppBarTheme(
+      iconTheme: IconThemeData(
+        color: Colors.black
+      ),
       backgroundColor: AppColors.backgroundLight,
       titleTextStyle: AppStyles.s16w500,
       systemOverlayStyle: SystemUiOverlayStyle(
