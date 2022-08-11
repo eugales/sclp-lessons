@@ -7,12 +7,12 @@ import 'package:lessons2/generated/l10n.dart';
 import 'package:lessons2/models/character.dart';
 import 'package:lessons2/ui/characters_screen/widgets/character_grid_tile.dart';
 import 'package:lessons2/ui/characters_screen/widgets/character_list_tile.dart';
-import 'package:lessons2/ui/characters_screen/widgets/total_characters_label.dart';
-import 'package:lessons2/ui/characters_screen/widgets/search_field.dart';
+import 'package:lessons2/ui/widgets/app_list_view.dart';
+import 'package:lessons2/ui/widgets/total_items_label.dart';
+import 'package:lessons2/ui/widgets/search_field.dart';
 import 'package:lessons2/ui/widgets/app_nav_bar.dart';
 
 part 'widgets/_grid_view.dart';
-part 'widgets/_list_view.dart';
 
 class CharactersScreen extends StatelessWidget {
   const CharactersScreen({Key? key}) : super(key: key);
@@ -27,14 +27,13 @@ class CharactersScreen extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                child: SearchField(
-                  onChanged: (value) {
-                    BlocProvider.of<BlocCharacters>(context)
-                        .add(EventCharactersFilterByName(value));
-                  },
-                ),
+              SearchField(
+                onChanged: (value) {
+                  BlocProvider.of<BlocCharacters>(context).add(
+                    EventCharactersFilterByName(value),
+                  );
+                },
+                labelName: S.of(context).findCharacter,
               ),
               const SizedBox(height: 4),
               BlocBuilder<BlocCharacters, StateBlocCharacters>(
@@ -44,15 +43,13 @@ class CharactersScreen extends StatelessWidget {
                     charactersTotal = state.data.length;
                   }
 
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
-                    child: TotalCharactersLabel(
-                      callback: () {
-                        isListView.value = !isListView.value;
-                      },
-                      isListView: isListView,
-                      totalCharactersCount: charactersTotal,
-                    ),
+                  return TotalItemsLabel(
+                    callback: () {
+                      isListView.value = !isListView.value;
+                    },
+                    isListView: isListView,
+                    totalItemsCount: charactersTotal,
+                    labelName: S.of(context).totalCharacters,
                   );
                 },
               ),
@@ -61,12 +58,9 @@ class CharactersScreen extends StatelessWidget {
                   builder: (context, state) {
                     return state.when(
                       initial: () => const SizedBox.shrink(),
-                      loading: () {
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [CircularProgressIndicator()],
-                        );
-                      },
+                      loading: () => const Center(
+                        child: CircularProgressIndicator(),
+                      ),
                       data: (data) {
                         if (data.isEmpty) {
                           return Row(
@@ -83,7 +77,10 @@ class CharactersScreen extends StatelessWidget {
                             valueListenable: isListView,
                             builder: (context, isListViewMode, _) {
                               return isListViewMode
-                                  ? _ListView(data)
+                                  ? AppListView<CharacterListTile>(
+                                      items: data,
+                                      callback: (item) {},
+                                    )
                                   : _GridView(data);
                             },
                           );
