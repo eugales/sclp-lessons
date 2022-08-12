@@ -7,13 +7,13 @@ class TotalItemsLabel extends StatelessWidget {
     Key? key,
     required this.totalItemsCount,
     this.isListView,
-    required this.callback,
+    this.callback,
     required this.labelName,
   }) : super(key: key);
 
   final int totalItemsCount;
   final ValueNotifier<bool>? isListView;
-  final VoidCallback callback;
+  final VoidCallback? callback;
   final String labelName;
 
   @override
@@ -35,9 +35,7 @@ class TotalItemsLabel extends StatelessWidget {
           ),
           if (isListView != null)
             InkWell(
-              onTap: () {
-                callback();
-              },
+              onTap: callback,
               child: ValueListenableBuilder<bool>(
                   valueListenable: isListView!,
                   builder: (context, isListViewMode, _) {

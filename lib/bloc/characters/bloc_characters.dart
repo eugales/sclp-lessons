@@ -14,7 +14,7 @@ class BlocCharacters extends Bloc<EventBlocCharacters, StateBlocCharacters> {
         emit(StateCharactersError(result.errorMessage!));
         return;
       }
-      emit(StateCharactersData(data: result.charactersList!));
+      emit(StateCharactersData(data: result.charactersList!, searchText: event.name));
     });
     
   }

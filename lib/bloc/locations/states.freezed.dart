@@ -20,7 +20,7 @@ mixin _$LocationsState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Location> data) data,
+    required TResult Function(List<Location> data, String searchText) data,
     required TResult Function(String error) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +28,7 @@ mixin _$LocationsState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Location> data)? data,
+    TResult Function(List<Location> data, String searchText)? data,
     TResult Function(String error)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$LocationsState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Location> data)? data,
+    TResult Function(List<Location> data, String searchText)? data,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) =>
@@ -128,7 +128,7 @@ class _$LocationsStateInitial implements LocationsStateInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Location> data) data,
+    required TResult Function(List<Location> data, String searchText) data,
     required TResult Function(String error) error,
   }) {
     return initial();
@@ -139,7 +139,7 @@ class _$LocationsStateInitial implements LocationsStateInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Location> data)? data,
+    TResult Function(List<Location> data, String searchText)? data,
     TResult Function(String error)? error,
   }) {
     return initial?.call();
@@ -150,7 +150,7 @@ class _$LocationsStateInitial implements LocationsStateInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Location> data)? data,
+    TResult Function(List<Location> data, String searchText)? data,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -245,7 +245,7 @@ class _$LocationsStateLoading implements LocationsStateLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Location> data) data,
+    required TResult Function(List<Location> data, String searchText) data,
     required TResult Function(String error) error,
   }) {
     return loading();
@@ -256,7 +256,7 @@ class _$LocationsStateLoading implements LocationsStateLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Location> data)? data,
+    TResult Function(List<Location> data, String searchText)? data,
     TResult Function(String error)? error,
   }) {
     return loading?.call();
@@ -267,7 +267,7 @@ class _$LocationsStateLoading implements LocationsStateLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Location> data)? data,
+    TResult Function(List<Location> data, String searchText)? data,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
@@ -324,7 +324,7 @@ abstract class _$$LocationsStateDataCopyWith<$Res> {
   factory _$$LocationsStateDataCopyWith(_$LocationsStateData value,
           $Res Function(_$LocationsStateData) then) =
       __$$LocationsStateDataCopyWithImpl<$Res>;
-  $Res call({List<Location> data});
+  $Res call({List<Location> data, String searchText});
 }
 
 /// @nodoc
@@ -341,12 +341,17 @@ class __$$LocationsStateDataCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = freezed,
+    Object? searchText = freezed,
   }) {
     return _then(_$LocationsStateData(
       data: data == freezed
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
               as List<Location>,
+      searchText: searchText == freezed
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -354,7 +359,9 @@ class __$$LocationsStateDataCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LocationsStateData implements LocationsStateData {
-  _$LocationsStateData({required final List<Location> data}) : _data = data;
+  _$LocationsStateData(
+      {required final List<Location> data, required this.searchText})
+      : _data = data;
 
   final List<Location> _data;
   @override
@@ -364,8 +371,11 @@ class _$LocationsStateData implements LocationsStateData {
   }
 
   @override
+  final String searchText;
+
+  @override
   String toString() {
-    return 'LocationsState.data(data: $data)';
+    return 'LocationsState.data(data: $data, searchText: $searchText)';
   }
 
   @override
@@ -373,12 +383,16 @@ class _$LocationsStateData implements LocationsStateData {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LocationsStateData &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._data, _data) &&
+            const DeepCollectionEquality()
+                .equals(other.searchText, searchText));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_data),
+      const DeepCollectionEquality().hash(searchText));
 
   @JsonKey(ignore: true)
   @override
@@ -391,10 +405,10 @@ class _$LocationsStateData implements LocationsStateData {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Location> data) data,
+    required TResult Function(List<Location> data, String searchText) data,
     required TResult Function(String error) error,
   }) {
-    return data(this.data);
+    return data(this.data, searchText);
   }
 
   @override
@@ -402,10 +416,10 @@ class _$LocationsStateData implements LocationsStateData {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Location> data)? data,
+    TResult Function(List<Location> data, String searchText)? data,
     TResult Function(String error)? error,
   }) {
-    return data?.call(this.data);
+    return data?.call(this.data, searchText);
   }
 
   @override
@@ -413,12 +427,12 @@ class _$LocationsStateData implements LocationsStateData {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Location> data)? data,
+    TResult Function(List<Location> data, String searchText)? data,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(this.data);
+      return data(this.data, searchText);
     }
     return orElse();
   }
@@ -462,10 +476,12 @@ class _$LocationsStateData implements LocationsStateData {
 }
 
 abstract class LocationsStateData implements LocationsState {
-  factory LocationsStateData({required final List<Location> data}) =
-      _$LocationsStateData;
+  factory LocationsStateData(
+      {required final List<Location> data,
+      required final String searchText}) = _$LocationsStateData;
 
   List<Location> get data;
+  String get searchText;
   @JsonKey(ignore: true)
   _$$LocationsStateDataCopyWith<_$LocationsStateData> get copyWith =>
       throw _privateConstructorUsedError;
@@ -539,7 +555,7 @@ class _$LocationsStateError implements LocationsStateError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Location> data) data,
+    required TResult Function(List<Location> data, String searchText) data,
     required TResult Function(String error) error,
   }) {
     return error(this.error);
@@ -550,7 +566,7 @@ class _$LocationsStateError implements LocationsStateError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Location> data)? data,
+    TResult Function(List<Location> data, String searchText)? data,
     TResult Function(String error)? error,
   }) {
     return error?.call(this.error);
@@ -561,7 +577,7 @@ class _$LocationsStateError implements LocationsStateError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Location> data)? data,
+    TResult Function(List<Location> data, String searchText)? data,
     TResult Function(String error)? error,
     required TResult orElse(),
   }) {

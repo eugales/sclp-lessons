@@ -19,6 +19,8 @@ class CharactersScreen extends StatelessWidget {
   const CharactersScreen({Key? key}) : super(key: key);
 
   static final isListView = ValueNotifier(true);
+  static final controller = TextEditingController();
+  static var searchText = '';
 
   @override
   Widget build(BuildContext context) {
@@ -28,13 +30,21 @@ class CharactersScreen extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: [
-              SearchField(
-                onChanged: (value) {
-                  BlocProvider.of<BlocCharacters>(context).add(
-                    EventCharactersFilterByName(value),
-                  );
+              BlocListener<BlocCharacters, StateBlocCharacters>(
+                listener: (context, state) {
+                  if (state is StateCharactersData) {
+                    searchText = state.searchText;
+                  }
                 },
-                labelName: S.of(context).findCharacter,
+                child: SearchField(
+                  controller: controller..text = searchText,
+                  onChanged: (value) {
+                    BlocProvider.of<BlocCharacters>(context).add(
+                      EventCharactersFilterByName(value),
+                    );
+                  },
+                  labelName: S.of(context).findCharacter,
+                ),
               ),
               const SizedBox(height: 4),
               BlocBuilder<BlocCharacters, StateBlocCharacters>(
@@ -62,7 +72,7 @@ class CharactersScreen extends StatelessWidget {
                       loading: () => const Center(
                         child: CircularProgressIndicator(),
                       ),
-                      data: (data) {
+                      data: (data, _) {
                         if (data.isEmpty) {
                           return Row(
                             mainAxisAlignment: MainAxisAlignment.center,

@@ -16,6 +16,8 @@ class LocationsScreen extends StatelessWidget {
   const LocationsScreen({Key? key}) : super(key: key);
 
   static final isListView = ValueNotifier(true);
+  static final controller = TextEditingController();
+  static var searchText = '';
 
   @override
   Widget build(BuildContext context) {
@@ -25,13 +27,23 @@ class LocationsScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            SearchField(
-              onChanged: (value) {
-                BlocProvider.of<LocationsBloc>(context)
-                    .add(LocationsEventFilterByName(value));
+            BlocListener<LocationsBloc, LocationsState>(
+              listener: (context, state) {
+                if (state is LocationsStateData) {
+                  searchText = state.searchText;
+                }
               },
-              labelName: S.of(context).findLocation,
+              child: SearchField(
+                controller: controller..text = searchText,
+                onChanged: (value) {
+                  BlocProvider.of<LocationsBloc>(context).add(
+                    LocationsEventFilterByName(value),
+                  );
+                },
+                labelName: S.of(context).findLocation,
+              ),
             ),
+            
             const SizedBox(height: 4),
             BlocBuilder<LocationsBloc, LocationsState>(
               builder: (context, state) {
@@ -41,9 +53,6 @@ class LocationsScreen extends StatelessWidget {
                 }
                 return TotalItemsLabel(
                   totalItemsCount: totalItemsCount,
-                  callback: () {
-                    isListView.value = !isListView.value;
-                  },
                   labelName: S.of(context).totalLocations,
                 );
               },
@@ -56,7 +65,7 @@ class LocationsScreen extends StatelessWidget {
                     loading: () => const Center(
                       child: CircularProgressIndicator(),
                     ),
-                    data: (data) {
+                    data: (data, _) {
                       return AppListView<LocationListTile>(
                         items: data,
                         callback: (item) {
@@ -69,7 +78,8 @@ class LocationsScreen extends StatelessWidget {
                         },
                       );
                     },
-                    error: (error) => Center(child: Text(error, style: AppStyles.s16w500)),
+                    error: (error) =>
+                        Center(child: Text(error, style: AppStyles.s16w500)),
                   );
                 },
               ),

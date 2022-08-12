@@ -14,7 +14,7 @@ class LocationsBloc extends Bloc<LocationsEvent, LocationsState> {
         emit(LocationsStateError(result.errorMessage!));
         return;
       }
-      emit(LocationsStateData(data: result.locations!));
+      emit(LocationsStateData(data: result.locations!, searchText: event.name));
     });
   }
   final RepoLocations repo;
