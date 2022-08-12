@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:lessons2/generated/l10n.dart';
 import 'package:lessons2/models/location.dart';
 import 'package:lessons2/repo/api.dart';
@@ -15,7 +16,9 @@ class RepoLocations {
           results.map((item) => Location.fromJson(item)).toList();
 
       return ResultRepoLocations(locations: locations);
-    } catch (e) {
+    } on DioError catch (e) {
+      return ResultRepoLocations(errorMessage: e.response?.data);
+    } catch (_) {
       return ResultRepoLocations(errorMessage: S.current.somethingWentWrong);
     }
   }

@@ -58,6 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "location": MessageLookupByLibrary.simpleMessage("Местоположение"),
         "login": MessageLookupByLibrary.simpleMessage("Логин"),
         "male": MessageLookupByLibrary.simpleMessage("Мужчина"),
+        "noConnection":
+            MessageLookupByLibrary.simpleMessage("Нет интернет соединения"),
         "ok": MessageLookupByLibrary.simpleMessage("Ок"),
         "password": MessageLookupByLibrary.simpleMessage("Пароль"),
         "russian": MessageLookupByLibrary.simpleMessage("Русский"),

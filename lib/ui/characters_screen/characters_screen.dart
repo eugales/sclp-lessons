@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lessons2/bloc/characters/bloc_characters.dart';
 import 'package:lessons2/bloc/characters/states.dart';
+import 'package:lessons2/constants/app_styles.dart';
 import 'package:lessons2/generated/l10n.dart';
 
 import 'package:lessons2/models/character.dart';
@@ -91,7 +92,7 @@ class CharactersScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Flexible(
-                              child: Text(error),
+                              child: Text(error, style: AppStyles.s16w500),
                             )
                           ],
                         );

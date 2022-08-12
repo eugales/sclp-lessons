@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:lessons2/generated/l10n.dart';
 import 'package:lessons2/models/character.dart';
 import 'package:lessons2/repo/api.dart';
@@ -15,7 +16,9 @@ class RepoCharacters {
         return Character.fromJson(character);
       }).toList();
       return ResultRepoCharacters(charactersList: charactersList);
-    } catch (e) {
+    } on DioError catch (e) {
+      return ResultRepoCharacters(errorMessage: e.response?.data);
+    } catch (_) {
       return ResultRepoCharacters(errorMessage: S.current.somethingWentWrong);
     }
   }

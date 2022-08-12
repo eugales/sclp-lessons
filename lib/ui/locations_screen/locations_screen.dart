@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lessons2/bloc/locations/bloc_locations.dart';
 import 'package:lessons2/bloc/locations/states.dart';
+import 'package:lessons2/constants/app_styles.dart';
 import 'package:lessons2/generated/l10n.dart';
 import 'package:lessons2/models/location.dart';
 import 'package:lessons2/ui/location_details_screen/location_details_screen.dart';
@@ -68,7 +69,7 @@ class LocationsScreen extends StatelessWidget {
                         },
                       );
                     },
-                    error: (error) => Text(error),
+                    error: (error) => Center(child: Text(error, style: AppStyles.s16w500)),
                   );
                 },
               ),
