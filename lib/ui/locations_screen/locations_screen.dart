@@ -59,7 +59,30 @@ class LocationsScreen extends StatelessWidget {
             ),
             Expanded(
               child: BlocBuilder<LocationsBloc, LocationsState>(
+                buildWhen: (previous, current) {
+                  if (previous is LocationsStateInitial &&
+                      current is LocationsStateInitial) {
+                    return false;
+                  } else
+                  if (previous is LocationsStateLoading &&
+                      current is LocationsStateLoading) {
+                    return false;
+                  } else
+                  if (previous is LocationsStateData &&
+                      current is LocationsStateData) {
+                    bool diffLength =
+                        previous.data.length != current.data.length;
+                    return diffLength || current.searchText.isEmpty;
+                  } else
+                  if (previous is LocationsStateError &&
+                      current is LocationsStateError) {
+                    return previous.error != current.error;
+                  }
+                  return true;
+                },
                 builder: (context, state) {
+                  //buildWhen is tested with typing: c-35
+                  print('builder: ${state.runtimeType}');
                   return state.when(
                     initial: () => const SizedBox.shrink(),
                     loading: () => const Center(
