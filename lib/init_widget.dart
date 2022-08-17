@@ -35,7 +35,7 @@ class InitWidget extends StatelessWidget {
           BlocProvider(
             create: (context) => LocationsBloc(
               repo: RepositoryProvider.of<RepoLocations>(context),
-            )..add(LocationsEventFilterByName('')),
+            )..add(LocationsEventFetch(name: '')),
           )
         ],
         child: child,

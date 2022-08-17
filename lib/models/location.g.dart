@@ -28,3 +28,19 @@ Map<String, dynamic> _$$_LocationToJson(_$_Location instance) =>
       'url': instance.url,
       'created': instance.created?.toIso8601String(),
     };
+
+_$_LocationResult _$$_LocationResultFromJson(Map<String, dynamic> json) =>
+    _$_LocationResult(
+      info: json['info'] == null
+          ? null
+          : Info.fromJson(json['info'] as Map<String, dynamic>),
+      results: (json['results'] as List<dynamic>?)
+          ?.map((e) => Location.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$_LocationResultToJson(_$_LocationResult instance) =>
+    <String, dynamic>{
+      'info': instance.info,
+      'results': instance.results,
+    };

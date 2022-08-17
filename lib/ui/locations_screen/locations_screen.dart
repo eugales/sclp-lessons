@@ -12,6 +12,8 @@ import 'package:lessons2/ui/widgets/app_nav_bar.dart';
 import 'package:lessons2/ui/widgets/search_field.dart';
 import 'package:lessons2/ui/widgets/total_items_label.dart';
 
+part 'widgets/body.dart';
+
 class LocationsScreen extends StatelessWidget {
   const LocationsScreen({Key? key}) : super(key: key);
 
@@ -36,14 +38,12 @@ class LocationsScreen extends StatelessWidget {
               child: SearchField(
                 controller: controller..text = searchText,
                 onChanged: (value) {
-                  BlocProvider.of<LocationsBloc>(context).add(
-                    LocationsEventFilterByName(value),
-                  );
+                  BlocProvider.of<LocationsBloc>(context)
+                      .add(LocationsEventFetch(name: value));
                 },
                 labelName: S.of(context).findLocation,
               ),
             ),
-            
             const SizedBox(height: 4),
             BlocBuilder<LocationsBloc, LocationsState>(
               builder: (context, state) {
@@ -65,18 +65,8 @@ class LocationsScreen extends StatelessWidget {
                     loading: () => const Center(
                       child: CircularProgressIndicator(),
                     ),
-                    data: (data, _) {
-                      return AppListView<LocationListTile>(
-                        items: data,
-                        callback: (item) {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => LocationDetailsScreen(
-                                  location: item as Location),
-                            ),
-                          );
-                        },
-                      );
+                    data: (data, _, __, ___) {
+                      return Body(data: data, searchText: searchText);
                     },
                     error: (error) =>
                         Center(child: Text(error, style: AppStyles.s16w500)),

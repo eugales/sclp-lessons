@@ -400,6 +400,16 @@ class S {
     );
   }
 
+  /// `No items found`
+  String get noItemsFound {
+    return Intl.message(
+      'No items found',
+      name: 'noItemsFound',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Aired`
   String get aired {
     return Intl.message(

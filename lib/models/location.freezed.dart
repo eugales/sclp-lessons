@@ -261,3 +261,179 @@ abstract class _Location implements Location {
   _$$_LocationCopyWith<_$_Location> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+LocationResult _$LocationResultFromJson(Map<String, dynamic> json) {
+  return _LocationResult.fromJson(json);
+}
+
+/// @nodoc
+mixin _$LocationResult {
+  Info? get info => throw _privateConstructorUsedError;
+  List<Location>? get results => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LocationResultCopyWith<LocationResult> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $LocationResultCopyWith<$Res> {
+  factory $LocationResultCopyWith(
+          LocationResult value, $Res Function(LocationResult) then) =
+      _$LocationResultCopyWithImpl<$Res>;
+  $Res call({Info? info, List<Location>? results});
+
+  $InfoCopyWith<$Res>? get info;
+}
+
+/// @nodoc
+class _$LocationResultCopyWithImpl<$Res>
+    implements $LocationResultCopyWith<$Res> {
+  _$LocationResultCopyWithImpl(this._value, this._then);
+
+  final LocationResult _value;
+  // ignore: unused_field
+  final $Res Function(LocationResult) _then;
+
+  @override
+  $Res call({
+    Object? info = freezed,
+    Object? results = freezed,
+  }) {
+    return _then(_value.copyWith(
+      info: info == freezed
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
+              as Info?,
+      results: results == freezed
+          ? _value.results
+          : results // ignore: cast_nullable_to_non_nullable
+              as List<Location>?,
+    ));
+  }
+
+  @override
+  $InfoCopyWith<$Res>? get info {
+    if (_value.info == null) {
+      return null;
+    }
+
+    return $InfoCopyWith<$Res>(_value.info!, (value) {
+      return _then(_value.copyWith(info: value));
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$_LocationResultCopyWith<$Res>
+    implements $LocationResultCopyWith<$Res> {
+  factory _$$_LocationResultCopyWith(
+          _$_LocationResult value, $Res Function(_$_LocationResult) then) =
+      __$$_LocationResultCopyWithImpl<$Res>;
+  @override
+  $Res call({Info? info, List<Location>? results});
+
+  @override
+  $InfoCopyWith<$Res>? get info;
+}
+
+/// @nodoc
+class __$$_LocationResultCopyWithImpl<$Res>
+    extends _$LocationResultCopyWithImpl<$Res>
+    implements _$$_LocationResultCopyWith<$Res> {
+  __$$_LocationResultCopyWithImpl(
+      _$_LocationResult _value, $Res Function(_$_LocationResult) _then)
+      : super(_value, (v) => _then(v as _$_LocationResult));
+
+  @override
+  _$_LocationResult get _value => super._value as _$_LocationResult;
+
+  @override
+  $Res call({
+    Object? info = freezed,
+    Object? results = freezed,
+  }) {
+    return _then(_$_LocationResult(
+      info: info == freezed
+          ? _value.info
+          : info // ignore: cast_nullable_to_non_nullable
+              as Info?,
+      results: results == freezed
+          ? _value._results
+          : results // ignore: cast_nullable_to_non_nullable
+              as List<Location>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_LocationResult implements _LocationResult {
+  const _$_LocationResult({this.info, final List<Location>? results})
+      : _results = results;
+
+  factory _$_LocationResult.fromJson(Map<String, dynamic> json) =>
+      _$$_LocationResultFromJson(json);
+
+  @override
+  final Info? info;
+  final List<Location>? _results;
+  @override
+  List<Location>? get results {
+    final value = _results;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  String toString() {
+    return 'LocationResult(info: $info, results: $results)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LocationResult &&
+            const DeepCollectionEquality().equals(other.info, info) &&
+            const DeepCollectionEquality().equals(other._results, _results));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(info),
+      const DeepCollectionEquality().hash(_results));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_LocationResultCopyWith<_$_LocationResult> get copyWith =>
+      __$$_LocationResultCopyWithImpl<_$_LocationResult>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_LocationResultToJson(
+      this,
+    );
+  }
+}
+
+abstract class _LocationResult implements LocationResult {
+  const factory _LocationResult(
+      {final Info? info, final List<Location>? results}) = _$_LocationResult;
+
+  factory _LocationResult.fromJson(Map<String, dynamic> json) =
+      _$_LocationResult.fromJson;
+
+  @override
+  Info? get info;
+  @override
+  List<Location>? get results;
+  @override
+  @JsonKey(ignore: true)
+  _$$_LocationResultCopyWith<_$_LocationResult> get copyWith =>
+      throw _privateConstructorUsedError;
+}

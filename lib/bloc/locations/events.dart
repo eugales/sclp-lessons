@@ -2,9 +2,12 @@ part of 'bloc_locations.dart';
 
 abstract class LocationsEvent {}
 
-class LocationsEventFilterByName extends LocationsEvent {
-  LocationsEventFilterByName(this.name);
-
+class LocationsEventFetch extends LocationsEvent {
+  LocationsEventFetch({required this.name});
   String name;
 }
 
+class LocationsEventNextPage extends LocationsEvent {
+  LocationsEventNextPage({required this.name});
+  String name;
+}

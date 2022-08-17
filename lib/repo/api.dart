@@ -11,8 +11,6 @@ class Api {
 
   final options = BaseOptions(
     baseUrl: 'https://rickandmortyapi.com/api',
-    connectTimeout: 5000,
-    receiveTimeout: 3000,
   );
 }
 
@@ -24,10 +22,22 @@ class _BasicInterceptor implements Interceptor {
     if (err.error is SocketException) {
       err.response = Response<String>(
         requestOptions: err.requestOptions,
-        data: S.current.noConnection
+        data: S.current.noConnection,
       );
-      handler.next(err);
     }
+    if (err.error is HttpException) {
+      err.response = Response<String>(
+        requestOptions: err.requestOptions,
+        data: err.error,
+      );
+    }
+    if (err.error is String && err.response?.statusCode == 404) {
+      err.response = Response<String>(
+        requestOptions: err.requestOptions,
+        data: S.current.noItemsFound,
+      );
+    }
+    handler.next(err);
   }
 
   @override

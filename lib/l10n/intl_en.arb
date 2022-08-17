@@ -34,6 +34,7 @@
   "location": "Location",
   "findLocation": "Find location",
   "totalLocations": "Total locations",
+  "noItemsFound": "No items found",
   "aired": "Aired",
   "noConnection": "No internet connection"
 }

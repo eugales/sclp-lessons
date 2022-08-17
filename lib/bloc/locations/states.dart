@@ -7,6 +7,11 @@ part 'states.freezed.dart';
 class LocationsState with _$LocationsState {
   factory LocationsState.initial() = LocationsStateInitial;
   factory LocationsState.loading() = LocationsStateLoading;
-  factory LocationsState.data({required List<Location> data, required String searchText}) = LocationsStateData;
+  factory LocationsState.data({
+    required List<Location> data,
+    required String searchText,
+    @Default(false) bool isLoading,
+    String? errorMessage
+  }) = LocationsStateData;
   factory LocationsState.error(String error) = LocationsStateError;
 }
