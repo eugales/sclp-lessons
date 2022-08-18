@@ -86,10 +86,21 @@ class LocationsScreen extends StatelessWidget {
                       child: CircularProgressIndicator(),
                     ),
                     data: (data, _, isLoading, isEndOfData, errorMessage) {
-                      return Body(
-                        data: data,
-                        searchText: searchText,
-                        isEndOfData: isEndOfData,
+                      return Stack(
+                        children: [
+                          Body(
+                            data: data,
+                            searchText: searchText,
+                            isEndOfData: isEndOfData,
+                          ),
+                          if (isLoading)
+                            const Positioned(
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              child: LinearProgressIndicator(),
+                            )
+                        ],
                       );
                     },
                     error: (error) => Center(
