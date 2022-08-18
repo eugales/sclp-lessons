@@ -5,10 +5,12 @@ class Body extends StatelessWidget {
     Key? key,
     required this.data,
     required this.searchText,
+    required this.isEndOfData,
   }) : super(key: key);
 
   final List<Location> data;
   final String searchText;
+  final bool isEndOfData;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class Body extends StatelessWidget {
       child: NotificationListener(
         onNotification: (notification) {
           if (notification is ScrollNotification) {
-            if (notification.metrics.extentAfter == 0) {
+            if (!isEndOfData && notification.metrics.extentAfter == 0) {
               BlocProvider.of<LocationsBloc>(context)
                   .add(LocationsEventNextPage(name: searchText));
             }

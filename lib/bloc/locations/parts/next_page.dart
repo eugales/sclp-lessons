@@ -5,10 +5,6 @@ extension NextPage on LocationsBloc {
     LocationsEventNextPage event,
     Emitter<LocationsState> emit,
   ) async {
-    if (_isEndOfData) return;
-    if (_isInProgress) return;
-    _isInProgress = true;
-
     final currentData = state.maybeMap(
       data: (value) => value.data,
       orElse: () => <Location>[],
@@ -29,19 +25,17 @@ extension NextPage on LocationsBloc {
         data: currentData,
         searchText: event.name,
         errorMessage: result.errorMessage,
+        isEndOfData: result.isEndOfData,
       ));
-      _isEndOfData = result.isEndOfData;
-      _isInProgress = false;
       return;
     }
 
     emit(LocationsState.data(
       data: [...currentData, ...result.locations!],
       searchText: event.name,
+      isEndOfData: result.isEndOfData,
     ));
 
     _currentPage++;
-    _isEndOfData = result.isEndOfData;
-    _isInProgress = false;
   }
 }

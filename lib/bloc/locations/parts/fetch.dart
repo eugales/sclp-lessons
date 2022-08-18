@@ -9,9 +9,11 @@ extension Fetch on LocationsBloc {
       emit(LocationsState.error(result.errorMessage!));
       return;
     }
-    emit(LocationsState.data(data: result.locations!, searchText: event.name));
+    emit(LocationsState.data(
+      data: result.locations!,
+      searchText: event.name,
+      isEndOfData: result.isEndOfData,
+    ));
     _currentPage = 1;
-    _isInProgress = false;
-    _isEndOfData = false;
   }
 }

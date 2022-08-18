@@ -63,36 +63,38 @@ class LocationsScreen extends StatelessWidget {
                   if (previous is LocationsStateInitial &&
                       current is LocationsStateInitial) {
                     return false;
-                  } else
-                  if (previous is LocationsStateLoading &&
+                  } else if (previous is LocationsStateLoading &&
                       current is LocationsStateLoading) {
                     return false;
-                  } else
-                  if (previous is LocationsStateData &&
+                  } else if (previous is LocationsStateData &&
                       current is LocationsStateData) {
                     bool diffLength =
                         previous.data.length != current.data.length;
                     return diffLength || current.searchText.isEmpty;
-                  } else
-                  if (previous is LocationsStateError &&
+                  } else if (previous is LocationsStateError &&
                       current is LocationsStateError) {
                     return previous.error != current.error;
                   }
                   return true;
                 },
                 builder: (context, state) {
+                  // print('buildWhen');
                   //buildWhen is tested with typing: c-35
-                  print('builder: ${state.runtimeType}');
                   return state.when(
                     initial: () => const SizedBox.shrink(),
                     loading: () => const Center(
                       child: CircularProgressIndicator(),
                     ),
-                    data: (data, _, __, ___) {
-                      return Body(data: data, searchText: searchText);
+                    data: (data, _, isLoading, isEndOfData, errorMessage) {
+                      return Body(
+                        data: data,
+                        searchText: searchText,
+                        isEndOfData: isEndOfData,
+                      );
                     },
-                    error: (error) =>
-                        Center(child: Text(error, style: AppStyles.s16w500)),
+                    error: (error) => Center(
+                      child: Text(error, style: AppStyles.s16w500),
+                    ),
                   );
                 },
               ),

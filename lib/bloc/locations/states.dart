@@ -11,6 +11,7 @@ class LocationsState with _$LocationsState {
     required List<Location> data,
     required String searchText,
     @Default(false) bool isLoading,
+    @Default(false) bool isEndOfData,
     String? errorMessage
   }) = LocationsStateData;
   factory LocationsState.error(String error) = LocationsStateError;
