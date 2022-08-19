@@ -36,5 +36,6 @@
   "totalLocations": "Всего местоположений",
   "noItemsFound": "Ничего не найдено",
   "aired": "Премьера",
-  "noConnection": "Нет интернет соединения"
+  "noConnection": "Нет интернет соединения",
+  "episodes": "Эпизоды"
 }

@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "dontHaveAccount":
             MessageLookupByLibrary.simpleMessage("У вас еще нет аккаунта"),
         "english": MessageLookupByLibrary.simpleMessage("Английский"),
+        "episodes": MessageLookupByLibrary.simpleMessage("Эпизоды"),
         "error": MessageLookupByLibrary.simpleMessage("Ошибка"),
         "female": MessageLookupByLibrary.simpleMessage("Женщина"),
         "findCharacter":

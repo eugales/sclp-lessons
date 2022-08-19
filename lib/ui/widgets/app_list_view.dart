@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lessons2/models/episodes.dart';
 import 'package:lessons2/models/item.dart';
 import 'package:lessons2/models/character.dart';
 import 'package:lessons2/models/location.dart';
 import 'package:lessons2/ui/characters_screen/widgets/character_list_tile.dart';
+import 'package:lessons2/ui/episodes_screen/widgets/episode_list_tile.dart';
 import 'package:lessons2/ui/locations_screen/widgets/location_list_tile.dart';
 
 class AppListView<T> extends StatelessWidget {
@@ -40,6 +42,17 @@ class AppListView<T> extends StatelessWidget {
           );
         }
 
+        if (T == EpisodeListTile) {
+          final item = items[index];
+          return InkWell(
+            onTap: () => callback(item),
+            child: EpisodeListTile(
+              episode: item as Episode,
+              key: ObjectKey(item),
+            ),
+          );
+        }
+        
         return const SizedBox.shrink();
       },
     );

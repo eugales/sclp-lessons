@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lessons2/constants/app_assets.dart';
 import 'package:lessons2/generated/l10n.dart';
 import 'package:lessons2/ui/characters_screen/characters_screen.dart';
+import 'package:lessons2/ui/episodes_screen/episodes_screen.dart';
 import 'package:lessons2/ui/locations_screen/locations_screen.dart';
 import 'package:lessons2/ui/settings_screen.dart';
 
@@ -36,6 +37,12 @@ class AppNavigation {
     ),
     AppNavigation(
       currentIndex: 2,
+      assetName: AppAssets.svg.episode,
+      label: S.current.episodes,
+      widget: const EpisodesScreen(),
+    ),
+    AppNavigation(
+      currentIndex: 3,
       assetName: AppAssets.svg.settings,
       label: S.current.settings,
       widget: const SettingsScreen(),

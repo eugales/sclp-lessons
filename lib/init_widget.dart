@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lessons2/bloc/episodes/episodes_bloc.dart';
 import 'package:lessons2/bloc/characters/bloc_characters.dart';
 import 'package:lessons2/bloc/locations/bloc_locations.dart';
 import 'package:lessons2/repo/api.dart';
 
 import 'package:lessons2/repo/repo_characters.dart';
+import 'package:lessons2/repo/repo_episodes.dart';
 import 'package:lessons2/repo/repo_locations.dart';
 import 'package:lessons2/repo/repo_settings.dart';
 
@@ -23,7 +25,8 @@ class InitWidget extends StatelessWidget {
         RepositoryProvider(create: (context) => Api()),
         RepositoryProvider(create: (context) => RepoSettings()),
         RepositoryProvider(create: (context) => RepoCharacters()),
-        RepositoryProvider(create: (context) => RepoLocations())
+        RepositoryProvider(create: (context) => RepoLocations()),
+        RepositoryProvider(create: (context) => RepoEpisodes())
       ],
       child: MultiBlocProvider(
         providers: [
@@ -36,6 +39,11 @@ class InitWidget extends StatelessWidget {
             create: (context) => LocationsBloc(
               repo: RepositoryProvider.of<RepoLocations>(context),
             )..add(LocationsEventFetch(name: '')),
+          ),
+          BlocProvider(
+            create: (context) => EpisodesBloc(
+              repo: RepositoryProvider.of<RepoEpisodes>(context),
+            )..add(const EpisodesEvent.fetch()),
           )
         ],
         child: child,

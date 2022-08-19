@@ -36,6 +36,12 @@ class AppStyles {
     color: AppColors.title,
   );
 
+  static const s18w700 = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
+    color: AppColors.title,
+  );
+
   static const s20w400 = TextStyle(
     fontSize: 20,
     fontWeight: FontWeight.w400,
@@ -63,7 +69,7 @@ class AppStyles {
           statusBarBrightness: Brightness.dark),
     ),
     backgroundColor: AppColors.dark,
-    bottomNavigationBarTheme:  const BottomNavigationBarThemeData(
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: AppColors.dark,
         selectedItemColor: AppColors.tabBarSelectedDark),
     textTheme: TextTheme(
@@ -82,13 +88,11 @@ class AppStyles {
 
   static final light = ThemeData.light().copyWith(
     appBarTheme: const AppBarTheme(
-      iconTheme: IconThemeData(
-        color: Colors.black
-      ),
+      iconTheme: IconThemeData(color: Colors.black),
       backgroundColor: AppColors.backgroundLight,
       titleTextStyle: AppStyles.s16w500,
       systemOverlayStyle: SystemUiOverlayStyle(
-        statusBarColor: AppColors.dark,
+        statusBarColor: AppColors.light,
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.dark,
       ),
@@ -96,6 +100,7 @@ class AppStyles {
     backgroundColor: AppColors.backgroundLight,
     bottomAppBarColor: AppColors.light,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      type: BottomNavigationBarType.fixed,
       backgroundColor: AppColors.light,
       selectedItemColor: AppColors.primary,
       selectedLabelStyle: s12w400.copyWith(color: AppColors.primary),
