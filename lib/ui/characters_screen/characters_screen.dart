@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lessons2/bloc/characters/bloc_characters.dart';
 import 'package:lessons2/bloc/characters/states.dart';
-import 'package:lessons2/constants/app_styles.dart';
 import 'package:lessons2/generated/l10n.dart';
 
 import 'package:lessons2/models/character.dart';
 import 'package:lessons2/ui/characters_screen/widgets/character_grid_tile.dart';
 import 'package:lessons2/ui/characters_screen/widgets/character_list_tile.dart';
+import 'package:lessons2/ui/widgets/app_error_button.dart';
 import 'package:lessons2/ui/widgets/app_list_view.dart';
 import 'package:lessons2/ui/widgets/total_items_label.dart';
 import 'package:lessons2/ui/widgets/search_field.dart';
@@ -97,16 +97,13 @@ class CharactersScreen extends StatelessWidget {
                           );
                         }
                       },
-                      error: (error) {
-                        return Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Flexible(
-                              child: Text(error, style: AppStyles.s16w500),
-                            )
-                          ],
-                        );
-                      },
+                      error: (error) => AppErrorButton(
+                        errorMessage: error,
+                        callback: () {
+                          BlocProvider.of<BlocCharacters>(context)
+                              .add(EventCharactersFilterByName(''));
+                        },
+                      ),
                     );
                   },
                 ),
