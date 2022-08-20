@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+
 import 'package:lessons2/constants/app_styles.dart';
 import 'package:lessons2/generated/l10n.dart';
 import 'package:lessons2/repo/repo_settings.dart';
 import 'package:lessons2/ui/widgets/app_nav_bar.dart';
-import 'package:provider/provider.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
