@@ -11,12 +11,17 @@ class BlocCharacters extends Bloc<EventBlocCharacters, StateBlocCharacters> {
       emit(StateCharactersLoading());
       final result = await repo.filterByName(event.name);
       if (result.errorMessage != null) {
-        emit(StateCharactersError(result.errorMessage!));
+        emit(StateBlocCharacters.error(
+          error: result.errorMessage!,
+          searchText: event.name,
+        ));
         return;
       }
-      emit(StateCharactersData(data: result.charactersList!, searchText: event.name));
+      emit(StateCharactersData(
+        data: result.charactersList!,
+        searchText: event.name,
+      ));
     });
-    
   }
   final RepoCharacters repo;
 }

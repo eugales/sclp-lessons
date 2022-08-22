@@ -23,7 +23,7 @@ mixin _$LocationsState {
     required TResult Function(List<Location> data, String searchText,
             bool isLoading, bool isEndOfData, String? errorMessage)
         data,
-    required TResult Function(String error) error,
+    required TResult Function(String error, String searchText) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -33,7 +33,7 @@ mixin _$LocationsState {
     TResult Function(List<Location> data, String searchText, bool isLoading,
             bool isEndOfData, String? errorMessage)?
         data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,7 +43,7 @@ mixin _$LocationsState {
     TResult Function(List<Location> data, String searchText, bool isLoading,
             bool isEndOfData, String? errorMessage)?
         data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -137,7 +137,7 @@ class _$LocationsStateInitial implements LocationsStateInitial {
     required TResult Function(List<Location> data, String searchText,
             bool isLoading, bool isEndOfData, String? errorMessage)
         data,
-    required TResult Function(String error) error,
+    required TResult Function(String error, String searchText) error,
   }) {
     return initial();
   }
@@ -150,7 +150,7 @@ class _$LocationsStateInitial implements LocationsStateInitial {
     TResult Function(List<Location> data, String searchText, bool isLoading,
             bool isEndOfData, String? errorMessage)?
         data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
   }) {
     return initial?.call();
   }
@@ -163,7 +163,7 @@ class _$LocationsStateInitial implements LocationsStateInitial {
     TResult Function(List<Location> data, String searchText, bool isLoading,
             bool isEndOfData, String? errorMessage)?
         data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -260,7 +260,7 @@ class _$LocationsStateLoading implements LocationsStateLoading {
     required TResult Function(List<Location> data, String searchText,
             bool isLoading, bool isEndOfData, String? errorMessage)
         data,
-    required TResult Function(String error) error,
+    required TResult Function(String error, String searchText) error,
   }) {
     return loading();
   }
@@ -273,7 +273,7 @@ class _$LocationsStateLoading implements LocationsStateLoading {
     TResult Function(List<Location> data, String searchText, bool isLoading,
             bool isEndOfData, String? errorMessage)?
         data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
   }) {
     return loading?.call();
   }
@@ -286,7 +286,7 @@ class _$LocationsStateLoading implements LocationsStateLoading {
     TResult Function(List<Location> data, String searchText, bool isLoading,
             bool isEndOfData, String? errorMessage)?
         data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -466,7 +466,7 @@ class _$LocationsStateData implements LocationsStateData {
     required TResult Function(List<Location> data, String searchText,
             bool isLoading, bool isEndOfData, String? errorMessage)
         data,
-    required TResult Function(String error) error,
+    required TResult Function(String error, String searchText) error,
   }) {
     return data(this.data, searchText, isLoading, isEndOfData, errorMessage);
   }
@@ -479,7 +479,7 @@ class _$LocationsStateData implements LocationsStateData {
     TResult Function(List<Location> data, String searchText, bool isLoading,
             bool isEndOfData, String? errorMessage)?
         data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
   }) {
     return data?.call(
         this.data, searchText, isLoading, isEndOfData, errorMessage);
@@ -493,7 +493,7 @@ class _$LocationsStateData implements LocationsStateData {
     TResult Function(List<Location> data, String searchText, bool isLoading,
             bool isEndOfData, String? errorMessage)?
         data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -563,7 +563,7 @@ abstract class _$$LocationsStateErrorCopyWith<$Res> {
   factory _$$LocationsStateErrorCopyWith(_$LocationsStateError value,
           $Res Function(_$LocationsStateError) then) =
       __$$LocationsStateErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String error, String searchText});
 }
 
 /// @nodoc
@@ -580,11 +580,16 @@ class __$$LocationsStateErrorCopyWithImpl<$Res>
   @override
   $Res call({
     Object? error = freezed,
+    Object? searchText = freezed,
   }) {
     return _then(_$LocationsStateError(
       error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchText == freezed
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -593,14 +598,16 @@ class __$$LocationsStateErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$LocationsStateError implements LocationsStateError {
-  _$LocationsStateError(this.error);
+  _$LocationsStateError(this.error, this.searchText);
 
   @override
   final String error;
+  @override
+  final String searchText;
 
   @override
   String toString() {
-    return 'LocationsState.error(error: $error)';
+    return 'LocationsState.error(error: $error, searchText: $searchText)';
   }
 
   @override
@@ -608,12 +615,16 @@ class _$LocationsStateError implements LocationsStateError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$LocationsStateError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            const DeepCollectionEquality().equals(other.error, error) &&
+            const DeepCollectionEquality()
+                .equals(other.searchText, searchText));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(error),
+      const DeepCollectionEquality().hash(searchText));
 
   @JsonKey(ignore: true)
   @override
@@ -629,9 +640,9 @@ class _$LocationsStateError implements LocationsStateError {
     required TResult Function(List<Location> data, String searchText,
             bool isLoading, bool isEndOfData, String? errorMessage)
         data,
-    required TResult Function(String error) error,
+    required TResult Function(String error, String searchText) error,
   }) {
-    return error(this.error);
+    return error(this.error, searchText);
   }
 
   @override
@@ -642,9 +653,9 @@ class _$LocationsStateError implements LocationsStateError {
     TResult Function(List<Location> data, String searchText, bool isLoading,
             bool isEndOfData, String? errorMessage)?
         data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
   }) {
-    return error?.call(this.error);
+    return error?.call(this.error, searchText);
   }
 
   @override
@@ -655,11 +666,11 @@ class _$LocationsStateError implements LocationsStateError {
     TResult Function(List<Location> data, String searchText, bool isLoading,
             bool isEndOfData, String? errorMessage)?
         data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error);
+      return error(this.error, searchText);
     }
     return orElse();
   }
@@ -703,9 +714,11 @@ class _$LocationsStateError implements LocationsStateError {
 }
 
 abstract class LocationsStateError implements LocationsState {
-  factory LocationsStateError(final String error) = _$LocationsStateError;
+  factory LocationsStateError(final String error, final String searchText) =
+      _$LocationsStateError;
 
   String get error;
+  String get searchText;
   @JsonKey(ignore: true)
   _$$LocationsStateErrorCopyWith<_$LocationsStateError> get copyWith =>
       throw _privateConstructorUsedError;

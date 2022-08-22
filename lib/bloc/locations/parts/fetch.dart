@@ -6,7 +6,7 @@ extension Fetch on LocationsBloc {
     // emit(LocationsState.loading());
     final result = await repo.fetch(name: event.name);
     if (result.errorMessage != null) {
-      emit(LocationsState.error(result.errorMessage!));
+      emit(LocationsState.error(result.errorMessage!, event.name));
       return;
     }
     emit(LocationsState.data(

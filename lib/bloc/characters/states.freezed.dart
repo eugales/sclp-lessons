@@ -21,7 +21,7 @@ mixin _$StateBlocCharacters {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Character> data, String searchText) data,
-    required TResult Function(String error) error,
+    required TResult Function(String error, String searchText) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +29,7 @@ mixin _$StateBlocCharacters {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Character> data, String searchText)? data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +37,7 @@ mixin _$StateBlocCharacters {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Character> data, String searchText)? data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -130,7 +130,7 @@ class _$StateCharactersInitial implements StateCharactersInitial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Character> data, String searchText) data,
-    required TResult Function(String error) error,
+    required TResult Function(String error, String searchText) error,
   }) {
     return initial();
   }
@@ -141,7 +141,7 @@ class _$StateCharactersInitial implements StateCharactersInitial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Character> data, String searchText)? data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
   }) {
     return initial?.call();
   }
@@ -152,7 +152,7 @@ class _$StateCharactersInitial implements StateCharactersInitial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Character> data, String searchText)? data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -248,7 +248,7 @@ class _$StateCharactersLoading implements StateCharactersLoading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Character> data, String searchText) data,
-    required TResult Function(String error) error,
+    required TResult Function(String error, String searchText) error,
   }) {
     return loading();
   }
@@ -259,7 +259,7 @@ class _$StateCharactersLoading implements StateCharactersLoading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Character> data, String searchText)? data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
   }) {
     return loading?.call();
   }
@@ -270,7 +270,7 @@ class _$StateCharactersLoading implements StateCharactersLoading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Character> data, String searchText)? data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -408,7 +408,7 @@ class _$StateCharactersData implements StateCharactersData {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Character> data, String searchText) data,
-    required TResult Function(String error) error,
+    required TResult Function(String error, String searchText) error,
   }) {
     return data(this.data, searchText);
   }
@@ -419,7 +419,7 @@ class _$StateCharactersData implements StateCharactersData {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Character> data, String searchText)? data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
   }) {
     return data?.call(this.data, searchText);
   }
@@ -430,7 +430,7 @@ class _$StateCharactersData implements StateCharactersData {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Character> data, String searchText)? data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -494,7 +494,7 @@ abstract class _$$StateCharactersErrorCopyWith<$Res> {
   factory _$$StateCharactersErrorCopyWith(_$StateCharactersError value,
           $Res Function(_$StateCharactersError) then) =
       __$$StateCharactersErrorCopyWithImpl<$Res>;
-  $Res call({String error});
+  $Res call({String error, String searchText});
 }
 
 /// @nodoc
@@ -511,11 +511,16 @@ class __$$StateCharactersErrorCopyWithImpl<$Res>
   @override
   $Res call({
     Object? error = freezed,
+    Object? searchText = freezed,
   }) {
     return _then(_$StateCharactersError(
-      error == freezed
+      error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
+              as String,
+      searchText: searchText == freezed
+          ? _value.searchText
+          : searchText // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -524,14 +529,16 @@ class __$$StateCharactersErrorCopyWithImpl<$Res>
 /// @nodoc
 
 class _$StateCharactersError implements StateCharactersError {
-  _$StateCharactersError(this.error);
+  _$StateCharactersError({required this.error, required this.searchText});
 
   @override
   final String error;
+  @override
+  final String searchText;
 
   @override
   String toString() {
-    return 'StateBlocCharacters.error(error: $error)';
+    return 'StateBlocCharacters.error(error: $error, searchText: $searchText)';
   }
 
   @override
@@ -539,12 +546,16 @@ class _$StateCharactersError implements StateCharactersError {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$StateCharactersError &&
-            const DeepCollectionEquality().equals(other.error, error));
+            const DeepCollectionEquality().equals(other.error, error) &&
+            const DeepCollectionEquality()
+                .equals(other.searchText, searchText));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(error),
+      const DeepCollectionEquality().hash(searchText));
 
   @JsonKey(ignore: true)
   @override
@@ -558,9 +569,9 @@ class _$StateCharactersError implements StateCharactersError {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<Character> data, String searchText) data,
-    required TResult Function(String error) error,
+    required TResult Function(String error, String searchText) error,
   }) {
-    return error(this.error);
+    return error(this.error, searchText);
   }
 
   @override
@@ -569,9 +580,9 @@ class _$StateCharactersError implements StateCharactersError {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Character> data, String searchText)? data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
   }) {
-    return error?.call(this.error);
+    return error?.call(this.error, searchText);
   }
 
   @override
@@ -580,11 +591,11 @@ class _$StateCharactersError implements StateCharactersError {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<Character> data, String searchText)? data,
-    TResult Function(String error)? error,
+    TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(this.error);
+      return error(this.error, searchText);
     }
     return orElse();
   }
@@ -628,9 +639,12 @@ class _$StateCharactersError implements StateCharactersError {
 }
 
 abstract class StateCharactersError implements StateBlocCharacters {
-  factory StateCharactersError(final String error) = _$StateCharactersError;
+  factory StateCharactersError(
+      {required final String error,
+      required final String searchText}) = _$StateCharactersError;
 
   String get error;
+  String get searchText;
   @JsonKey(ignore: true)
   _$$StateCharactersErrorCopyWith<_$StateCharactersError> get copyWith =>
       throw _privateConstructorUsedError;

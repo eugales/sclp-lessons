@@ -7,6 +7,12 @@ part 'states.freezed.dart';
 class StateBlocCharacters with _$StateBlocCharacters {
   factory StateBlocCharacters.initial() = StateCharactersInitial;
   factory StateBlocCharacters.loading() = StateCharactersLoading;
-  factory StateBlocCharacters.data({required List<Character> data, required String searchText}) = StateCharactersData;
-  factory StateBlocCharacters.error(String error) = StateCharactersError;
+  factory StateBlocCharacters.data({
+    required List<Character> data,
+    required String searchText,
+  }) = StateCharactersData;
+  factory StateBlocCharacters.error({
+    required String error,
+    required String searchText,
+  }) = StateCharactersError;
 }

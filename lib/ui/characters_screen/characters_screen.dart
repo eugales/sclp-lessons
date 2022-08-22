@@ -40,7 +40,7 @@ class CharactersScreen extends StatelessWidget {
                   controller: controller..text = searchText,
                   onChanged: (value) {
                     BlocProvider.of<BlocCharacters>(context).add(
-                      EventCharactersFilterByName(value),
+                      EventCharactersFilterByName(name: value),
                     );
                   },
                   labelName: S.of(context).findCharacter,
@@ -97,11 +97,11 @@ class CharactersScreen extends StatelessWidget {
                           );
                         }
                       },
-                      error: (error) => AppErrorButton(
+                      error: (error, searchText) => AppErrorButton(
                         errorMessage: error,
                         callback: () {
                           BlocProvider.of<BlocCharacters>(context)
-                              .add(EventCharactersFilterByName(''));
+                              .add(EventCharactersFilterByName(name: searchText));
                         },
                       ),
                     );

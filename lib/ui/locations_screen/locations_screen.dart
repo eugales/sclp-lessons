@@ -103,11 +103,11 @@ class LocationsScreen extends StatelessWidget {
                         ],
                       );
                     },
-                    error: (error) => AppErrorButton(
+                    error: (error, searchText) => AppErrorButton(
                       errorMessage: error,
                       callback: () {
                         BlocProvider.of<LocationsBloc>(context)
-                            .add(LocationsEventFetch(name: ''));
+                            .add(LocationsEventFetch(name: searchText));
                       },
                     ),
                   );
