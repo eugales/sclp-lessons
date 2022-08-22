@@ -15,12 +15,14 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$StateBlocCharacters {
+mixin _$CharactersState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Character> data, String searchText) data,
+    required TResult Function(List<Character> data, String searchText,
+            bool isLoading, bool isEndOfData, String? errorMessage)
+        data,
     required TResult Function(String error, String searchText) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -28,7 +30,9 @@ mixin _$StateBlocCharacters {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> data, String searchText)? data,
+    TResult Function(List<Character> data, String searchText, bool isLoading,
+            bool isEndOfData, String? errorMessage)?
+        data,
     TResult Function(String error, String searchText)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -36,89 +40,91 @@ mixin _$StateBlocCharacters {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> data, String searchText)? data,
+    TResult Function(List<Character> data, String searchText, bool isLoading,
+            bool isEndOfData, String? errorMessage)?
+        data,
     TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(StateCharactersInitial value) initial,
-    required TResult Function(StateCharactersLoading value) loading,
-    required TResult Function(StateCharactersData value) data,
-    required TResult Function(StateCharactersError value) error,
+    required TResult Function(CharactersStateInitial value) initial,
+    required TResult Function(CharactersStateLoading value) loading,
+    required TResult Function(CharactersStateData value) data,
+    required TResult Function(CharactersStateError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(StateCharactersInitial value)? initial,
-    TResult Function(StateCharactersLoading value)? loading,
-    TResult Function(StateCharactersData value)? data,
-    TResult Function(StateCharactersError value)? error,
+    TResult Function(CharactersStateInitial value)? initial,
+    TResult Function(CharactersStateLoading value)? loading,
+    TResult Function(CharactersStateData value)? data,
+    TResult Function(CharactersStateError value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(StateCharactersInitial value)? initial,
-    TResult Function(StateCharactersLoading value)? loading,
-    TResult Function(StateCharactersData value)? data,
-    TResult Function(StateCharactersError value)? error,
+    TResult Function(CharactersStateInitial value)? initial,
+    TResult Function(CharactersStateLoading value)? loading,
+    TResult Function(CharactersStateData value)? data,
+    TResult Function(CharactersStateError value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $StateBlocCharactersCopyWith<$Res> {
-  factory $StateBlocCharactersCopyWith(
-          StateBlocCharacters value, $Res Function(StateBlocCharacters) then) =
-      _$StateBlocCharactersCopyWithImpl<$Res>;
+abstract class $CharactersStateCopyWith<$Res> {
+  factory $CharactersStateCopyWith(
+          CharactersState value, $Res Function(CharactersState) then) =
+      _$CharactersStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$StateBlocCharactersCopyWithImpl<$Res>
-    implements $StateBlocCharactersCopyWith<$Res> {
-  _$StateBlocCharactersCopyWithImpl(this._value, this._then);
+class _$CharactersStateCopyWithImpl<$Res>
+    implements $CharactersStateCopyWith<$Res> {
+  _$CharactersStateCopyWithImpl(this._value, this._then);
 
-  final StateBlocCharacters _value;
+  final CharactersState _value;
   // ignore: unused_field
-  final $Res Function(StateBlocCharacters) _then;
+  final $Res Function(CharactersState) _then;
 }
 
 /// @nodoc
-abstract class _$$StateCharactersInitialCopyWith<$Res> {
-  factory _$$StateCharactersInitialCopyWith(_$StateCharactersInitial value,
-          $Res Function(_$StateCharactersInitial) then) =
-      __$$StateCharactersInitialCopyWithImpl<$Res>;
+abstract class _$$CharactersStateInitialCopyWith<$Res> {
+  factory _$$CharactersStateInitialCopyWith(_$CharactersStateInitial value,
+          $Res Function(_$CharactersStateInitial) then) =
+      __$$CharactersStateInitialCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StateCharactersInitialCopyWithImpl<$Res>
-    extends _$StateBlocCharactersCopyWithImpl<$Res>
-    implements _$$StateCharactersInitialCopyWith<$Res> {
-  __$$StateCharactersInitialCopyWithImpl(_$StateCharactersInitial _value,
-      $Res Function(_$StateCharactersInitial) _then)
-      : super(_value, (v) => _then(v as _$StateCharactersInitial));
+class __$$CharactersStateInitialCopyWithImpl<$Res>
+    extends _$CharactersStateCopyWithImpl<$Res>
+    implements _$$CharactersStateInitialCopyWith<$Res> {
+  __$$CharactersStateInitialCopyWithImpl(_$CharactersStateInitial _value,
+      $Res Function(_$CharactersStateInitial) _then)
+      : super(_value, (v) => _then(v as _$CharactersStateInitial));
 
   @override
-  _$StateCharactersInitial get _value =>
-      super._value as _$StateCharactersInitial;
+  _$CharactersStateInitial get _value =>
+      super._value as _$CharactersStateInitial;
 }
 
 /// @nodoc
 
-class _$StateCharactersInitial implements StateCharactersInitial {
-  _$StateCharactersInitial();
+class _$CharactersStateInitial implements CharactersStateInitial {
+  _$CharactersStateInitial();
 
   @override
   String toString() {
-    return 'StateBlocCharacters.initial()';
+    return 'CharactersState.initial()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StateCharactersInitial);
+        (other.runtimeType == runtimeType && other is _$CharactersStateInitial);
   }
 
   @override
@@ -129,7 +135,9 @@ class _$StateCharactersInitial implements StateCharactersInitial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Character> data, String searchText) data,
+    required TResult Function(List<Character> data, String searchText,
+            bool isLoading, bool isEndOfData, String? errorMessage)
+        data,
     required TResult Function(String error, String searchText) error,
   }) {
     return initial();
@@ -140,7 +148,9 @@ class _$StateCharactersInitial implements StateCharactersInitial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> data, String searchText)? data,
+    TResult Function(List<Character> data, String searchText, bool isLoading,
+            bool isEndOfData, String? errorMessage)?
+        data,
     TResult Function(String error, String searchText)? error,
   }) {
     return initial?.call();
@@ -151,7 +161,9 @@ class _$StateCharactersInitial implements StateCharactersInitial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> data, String searchText)? data,
+    TResult Function(List<Character> data, String searchText, bool isLoading,
+            bool isEndOfData, String? errorMessage)?
+        data,
     TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) {
@@ -164,10 +176,10 @@ class _$StateCharactersInitial implements StateCharactersInitial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(StateCharactersInitial value) initial,
-    required TResult Function(StateCharactersLoading value) loading,
-    required TResult Function(StateCharactersData value) data,
-    required TResult Function(StateCharactersError value) error,
+    required TResult Function(CharactersStateInitial value) initial,
+    required TResult Function(CharactersStateLoading value) loading,
+    required TResult Function(CharactersStateData value) data,
+    required TResult Function(CharactersStateError value) error,
   }) {
     return initial(this);
   }
@@ -175,10 +187,10 @@ class _$StateCharactersInitial implements StateCharactersInitial {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(StateCharactersInitial value)? initial,
-    TResult Function(StateCharactersLoading value)? loading,
-    TResult Function(StateCharactersData value)? data,
-    TResult Function(StateCharactersError value)? error,
+    TResult Function(CharactersStateInitial value)? initial,
+    TResult Function(CharactersStateLoading value)? loading,
+    TResult Function(CharactersStateData value)? data,
+    TResult Function(CharactersStateError value)? error,
   }) {
     return initial?.call(this);
   }
@@ -186,10 +198,10 @@ class _$StateCharactersInitial implements StateCharactersInitial {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(StateCharactersInitial value)? initial,
-    TResult Function(StateCharactersLoading value)? loading,
-    TResult Function(StateCharactersData value)? data,
-    TResult Function(StateCharactersError value)? error,
+    TResult Function(CharactersStateInitial value)? initial,
+    TResult Function(CharactersStateLoading value)? loading,
+    TResult Function(CharactersStateData value)? data,
+    TResult Function(CharactersStateError value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -199,44 +211,44 @@ class _$StateCharactersInitial implements StateCharactersInitial {
   }
 }
 
-abstract class StateCharactersInitial implements StateBlocCharacters {
-  factory StateCharactersInitial() = _$StateCharactersInitial;
+abstract class CharactersStateInitial implements CharactersState {
+  factory CharactersStateInitial() = _$CharactersStateInitial;
 }
 
 /// @nodoc
-abstract class _$$StateCharactersLoadingCopyWith<$Res> {
-  factory _$$StateCharactersLoadingCopyWith(_$StateCharactersLoading value,
-          $Res Function(_$StateCharactersLoading) then) =
-      __$$StateCharactersLoadingCopyWithImpl<$Res>;
+abstract class _$$CharactersStateLoadingCopyWith<$Res> {
+  factory _$$CharactersStateLoadingCopyWith(_$CharactersStateLoading value,
+          $Res Function(_$CharactersStateLoading) then) =
+      __$$CharactersStateLoadingCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$StateCharactersLoadingCopyWithImpl<$Res>
-    extends _$StateBlocCharactersCopyWithImpl<$Res>
-    implements _$$StateCharactersLoadingCopyWith<$Res> {
-  __$$StateCharactersLoadingCopyWithImpl(_$StateCharactersLoading _value,
-      $Res Function(_$StateCharactersLoading) _then)
-      : super(_value, (v) => _then(v as _$StateCharactersLoading));
+class __$$CharactersStateLoadingCopyWithImpl<$Res>
+    extends _$CharactersStateCopyWithImpl<$Res>
+    implements _$$CharactersStateLoadingCopyWith<$Res> {
+  __$$CharactersStateLoadingCopyWithImpl(_$CharactersStateLoading _value,
+      $Res Function(_$CharactersStateLoading) _then)
+      : super(_value, (v) => _then(v as _$CharactersStateLoading));
 
   @override
-  _$StateCharactersLoading get _value =>
-      super._value as _$StateCharactersLoading;
+  _$CharactersStateLoading get _value =>
+      super._value as _$CharactersStateLoading;
 }
 
 /// @nodoc
 
-class _$StateCharactersLoading implements StateCharactersLoading {
-  _$StateCharactersLoading();
+class _$CharactersStateLoading implements CharactersStateLoading {
+  _$CharactersStateLoading();
 
   @override
   String toString() {
-    return 'StateBlocCharacters.loading()';
+    return 'CharactersState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StateCharactersLoading);
+        (other.runtimeType == runtimeType && other is _$CharactersStateLoading);
   }
 
   @override
@@ -247,7 +259,9 @@ class _$StateCharactersLoading implements StateCharactersLoading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Character> data, String searchText) data,
+    required TResult Function(List<Character> data, String searchText,
+            bool isLoading, bool isEndOfData, String? errorMessage)
+        data,
     required TResult Function(String error, String searchText) error,
   }) {
     return loading();
@@ -258,7 +272,9 @@ class _$StateCharactersLoading implements StateCharactersLoading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> data, String searchText)? data,
+    TResult Function(List<Character> data, String searchText, bool isLoading,
+            bool isEndOfData, String? errorMessage)?
+        data,
     TResult Function(String error, String searchText)? error,
   }) {
     return loading?.call();
@@ -269,7 +285,9 @@ class _$StateCharactersLoading implements StateCharactersLoading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> data, String searchText)? data,
+    TResult Function(List<Character> data, String searchText, bool isLoading,
+            bool isEndOfData, String? errorMessage)?
+        data,
     TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) {
@@ -282,10 +300,10 @@ class _$StateCharactersLoading implements StateCharactersLoading {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(StateCharactersInitial value) initial,
-    required TResult Function(StateCharactersLoading value) loading,
-    required TResult Function(StateCharactersData value) data,
-    required TResult Function(StateCharactersError value) error,
+    required TResult Function(CharactersStateInitial value) initial,
+    required TResult Function(CharactersStateLoading value) loading,
+    required TResult Function(CharactersStateData value) data,
+    required TResult Function(CharactersStateError value) error,
   }) {
     return loading(this);
   }
@@ -293,10 +311,10 @@ class _$StateCharactersLoading implements StateCharactersLoading {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(StateCharactersInitial value)? initial,
-    TResult Function(StateCharactersLoading value)? loading,
-    TResult Function(StateCharactersData value)? data,
-    TResult Function(StateCharactersError value)? error,
+    TResult Function(CharactersStateInitial value)? initial,
+    TResult Function(CharactersStateLoading value)? loading,
+    TResult Function(CharactersStateData value)? data,
+    TResult Function(CharactersStateError value)? error,
   }) {
     return loading?.call(this);
   }
@@ -304,10 +322,10 @@ class _$StateCharactersLoading implements StateCharactersLoading {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(StateCharactersInitial value)? initial,
-    TResult Function(StateCharactersLoading value)? loading,
-    TResult Function(StateCharactersData value)? data,
-    TResult Function(StateCharactersError value)? error,
+    TResult Function(CharactersStateInitial value)? initial,
+    TResult Function(CharactersStateLoading value)? loading,
+    TResult Function(CharactersStateData value)? data,
+    TResult Function(CharactersStateError value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -317,35 +335,43 @@ class _$StateCharactersLoading implements StateCharactersLoading {
   }
 }
 
-abstract class StateCharactersLoading implements StateBlocCharacters {
-  factory StateCharactersLoading() = _$StateCharactersLoading;
+abstract class CharactersStateLoading implements CharactersState {
+  factory CharactersStateLoading() = _$CharactersStateLoading;
 }
 
 /// @nodoc
-abstract class _$$StateCharactersDataCopyWith<$Res> {
-  factory _$$StateCharactersDataCopyWith(_$StateCharactersData value,
-          $Res Function(_$StateCharactersData) then) =
-      __$$StateCharactersDataCopyWithImpl<$Res>;
-  $Res call({List<Character> data, String searchText});
+abstract class _$$CharactersStateDataCopyWith<$Res> {
+  factory _$$CharactersStateDataCopyWith(_$CharactersStateData value,
+          $Res Function(_$CharactersStateData) then) =
+      __$$CharactersStateDataCopyWithImpl<$Res>;
+  $Res call(
+      {List<Character> data,
+      String searchText,
+      bool isLoading,
+      bool isEndOfData,
+      String? errorMessage});
 }
 
 /// @nodoc
-class __$$StateCharactersDataCopyWithImpl<$Res>
-    extends _$StateBlocCharactersCopyWithImpl<$Res>
-    implements _$$StateCharactersDataCopyWith<$Res> {
-  __$$StateCharactersDataCopyWithImpl(
-      _$StateCharactersData _value, $Res Function(_$StateCharactersData) _then)
-      : super(_value, (v) => _then(v as _$StateCharactersData));
+class __$$CharactersStateDataCopyWithImpl<$Res>
+    extends _$CharactersStateCopyWithImpl<$Res>
+    implements _$$CharactersStateDataCopyWith<$Res> {
+  __$$CharactersStateDataCopyWithImpl(
+      _$CharactersStateData _value, $Res Function(_$CharactersStateData) _then)
+      : super(_value, (v) => _then(v as _$CharactersStateData));
 
   @override
-  _$StateCharactersData get _value => super._value as _$StateCharactersData;
+  _$CharactersStateData get _value => super._value as _$CharactersStateData;
 
   @override
   $Res call({
     Object? data = freezed,
     Object? searchText = freezed,
+    Object? isLoading = freezed,
+    Object? isEndOfData = freezed,
+    Object? errorMessage = freezed,
   }) {
-    return _then(_$StateCharactersData(
+    return _then(_$CharactersStateData(
       data: data == freezed
           ? _value._data
           : data // ignore: cast_nullable_to_non_nullable
@@ -354,15 +380,31 @@ class __$$StateCharactersDataCopyWithImpl<$Res>
           ? _value.searchText
           : searchText // ignore: cast_nullable_to_non_nullable
               as String,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isEndOfData: isEndOfData == freezed
+          ? _value.isEndOfData
+          : isEndOfData // ignore: cast_nullable_to_non_nullable
+              as bool,
+      errorMessage: errorMessage == freezed
+          ? _value.errorMessage
+          : errorMessage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$StateCharactersData implements StateCharactersData {
-  _$StateCharactersData(
-      {required final List<Character> data, required this.searchText})
+class _$CharactersStateData implements CharactersStateData {
+  _$CharactersStateData(
+      {required final List<Character> data,
+      required this.searchText,
+      this.isLoading = false,
+      this.isEndOfData = false,
+      this.errorMessage})
       : _data = data;
 
   final List<Character> _data;
@@ -374,32 +416,48 @@ class _$StateCharactersData implements StateCharactersData {
 
   @override
   final String searchText;
+  @override
+  @JsonKey()
+  final bool isLoading;
+  @override
+  @JsonKey()
+  final bool isEndOfData;
+  @override
+  final String? errorMessage;
 
   @override
   String toString() {
-    return 'StateBlocCharacters.data(data: $data, searchText: $searchText)';
+    return 'CharactersState.data(data: $data, searchText: $searchText, isLoading: $isLoading, isEndOfData: $isEndOfData, errorMessage: $errorMessage)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StateCharactersData &&
+            other is _$CharactersStateData &&
             const DeepCollectionEquality().equals(other._data, _data) &&
             const DeepCollectionEquality()
-                .equals(other.searchText, searchText));
+                .equals(other.searchText, searchText) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality()
+                .equals(other.isEndOfData, isEndOfData) &&
+            const DeepCollectionEquality()
+                .equals(other.errorMessage, errorMessage));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_data),
-      const DeepCollectionEquality().hash(searchText));
+      const DeepCollectionEquality().hash(searchText),
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(isEndOfData),
+      const DeepCollectionEquality().hash(errorMessage));
 
   @JsonKey(ignore: true)
   @override
-  _$$StateCharactersDataCopyWith<_$StateCharactersData> get copyWith =>
-      __$$StateCharactersDataCopyWithImpl<_$StateCharactersData>(
+  _$$CharactersStateDataCopyWith<_$CharactersStateData> get copyWith =>
+      __$$CharactersStateDataCopyWithImpl<_$CharactersStateData>(
           this, _$identity);
 
   @override
@@ -407,10 +465,12 @@ class _$StateCharactersData implements StateCharactersData {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Character> data, String searchText) data,
+    required TResult Function(List<Character> data, String searchText,
+            bool isLoading, bool isEndOfData, String? errorMessage)
+        data,
     required TResult Function(String error, String searchText) error,
   }) {
-    return data(this.data, searchText);
+    return data(this.data, searchText, isLoading, isEndOfData, errorMessage);
   }
 
   @override
@@ -418,10 +478,13 @@ class _$StateCharactersData implements StateCharactersData {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> data, String searchText)? data,
+    TResult Function(List<Character> data, String searchText, bool isLoading,
+            bool isEndOfData, String? errorMessage)?
+        data,
     TResult Function(String error, String searchText)? error,
   }) {
-    return data?.call(this.data, searchText);
+    return data?.call(
+        this.data, searchText, isLoading, isEndOfData, errorMessage);
   }
 
   @override
@@ -429,12 +492,14 @@ class _$StateCharactersData implements StateCharactersData {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> data, String searchText)? data,
+    TResult Function(List<Character> data, String searchText, bool isLoading,
+            bool isEndOfData, String? errorMessage)?
+        data,
     TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(this.data, searchText);
+      return data(this.data, searchText, isLoading, isEndOfData, errorMessage);
     }
     return orElse();
   }
@@ -442,10 +507,10 @@ class _$StateCharactersData implements StateCharactersData {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(StateCharactersInitial value) initial,
-    required TResult Function(StateCharactersLoading value) loading,
-    required TResult Function(StateCharactersData value) data,
-    required TResult Function(StateCharactersError value) error,
+    required TResult Function(CharactersStateInitial value) initial,
+    required TResult Function(CharactersStateLoading value) loading,
+    required TResult Function(CharactersStateData value) data,
+    required TResult Function(CharactersStateError value) error,
   }) {
     return data(this);
   }
@@ -453,10 +518,10 @@ class _$StateCharactersData implements StateCharactersData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(StateCharactersInitial value)? initial,
-    TResult Function(StateCharactersLoading value)? loading,
-    TResult Function(StateCharactersData value)? data,
-    TResult Function(StateCharactersError value)? error,
+    TResult Function(CharactersStateInitial value)? initial,
+    TResult Function(CharactersStateLoading value)? loading,
+    TResult Function(CharactersStateData value)? data,
+    TResult Function(CharactersStateError value)? error,
   }) {
     return data?.call(this);
   }
@@ -464,10 +529,10 @@ class _$StateCharactersData implements StateCharactersData {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(StateCharactersInitial value)? initial,
-    TResult Function(StateCharactersLoading value)? loading,
-    TResult Function(StateCharactersData value)? data,
-    TResult Function(StateCharactersError value)? error,
+    TResult Function(CharactersStateInitial value)? initial,
+    TResult Function(CharactersStateLoading value)? loading,
+    TResult Function(CharactersStateData value)? data,
+    TResult Function(CharactersStateError value)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
@@ -477,43 +542,49 @@ class _$StateCharactersData implements StateCharactersData {
   }
 }
 
-abstract class StateCharactersData implements StateBlocCharacters {
-  factory StateCharactersData(
+abstract class CharactersStateData implements CharactersState {
+  factory CharactersStateData(
       {required final List<Character> data,
-      required final String searchText}) = _$StateCharactersData;
+      required final String searchText,
+      final bool isLoading,
+      final bool isEndOfData,
+      final String? errorMessage}) = _$CharactersStateData;
 
   List<Character> get data;
   String get searchText;
+  bool get isLoading;
+  bool get isEndOfData;
+  String? get errorMessage;
   @JsonKey(ignore: true)
-  _$$StateCharactersDataCopyWith<_$StateCharactersData> get copyWith =>
+  _$$CharactersStateDataCopyWith<_$CharactersStateData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$StateCharactersErrorCopyWith<$Res> {
-  factory _$$StateCharactersErrorCopyWith(_$StateCharactersError value,
-          $Res Function(_$StateCharactersError) then) =
-      __$$StateCharactersErrorCopyWithImpl<$Res>;
+abstract class _$$CharactersStateErrorCopyWith<$Res> {
+  factory _$$CharactersStateErrorCopyWith(_$CharactersStateError value,
+          $Res Function(_$CharactersStateError) then) =
+      __$$CharactersStateErrorCopyWithImpl<$Res>;
   $Res call({String error, String searchText});
 }
 
 /// @nodoc
-class __$$StateCharactersErrorCopyWithImpl<$Res>
-    extends _$StateBlocCharactersCopyWithImpl<$Res>
-    implements _$$StateCharactersErrorCopyWith<$Res> {
-  __$$StateCharactersErrorCopyWithImpl(_$StateCharactersError _value,
-      $Res Function(_$StateCharactersError) _then)
-      : super(_value, (v) => _then(v as _$StateCharactersError));
+class __$$CharactersStateErrorCopyWithImpl<$Res>
+    extends _$CharactersStateCopyWithImpl<$Res>
+    implements _$$CharactersStateErrorCopyWith<$Res> {
+  __$$CharactersStateErrorCopyWithImpl(_$CharactersStateError _value,
+      $Res Function(_$CharactersStateError) _then)
+      : super(_value, (v) => _then(v as _$CharactersStateError));
 
   @override
-  _$StateCharactersError get _value => super._value as _$StateCharactersError;
+  _$CharactersStateError get _value => super._value as _$CharactersStateError;
 
   @override
   $Res call({
     Object? error = freezed,
     Object? searchText = freezed,
   }) {
-    return _then(_$StateCharactersError(
+    return _then(_$CharactersStateError(
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -528,8 +599,8 @@ class __$$StateCharactersErrorCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$StateCharactersError implements StateCharactersError {
-  _$StateCharactersError({required this.error, required this.searchText});
+class _$CharactersStateError implements CharactersStateError {
+  _$CharactersStateError({required this.error, required this.searchText});
 
   @override
   final String error;
@@ -538,14 +609,14 @@ class _$StateCharactersError implements StateCharactersError {
 
   @override
   String toString() {
-    return 'StateBlocCharacters.error(error: $error, searchText: $searchText)';
+    return 'CharactersState.error(error: $error, searchText: $searchText)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$StateCharactersError &&
+            other is _$CharactersStateError &&
             const DeepCollectionEquality().equals(other.error, error) &&
             const DeepCollectionEquality()
                 .equals(other.searchText, searchText));
@@ -559,8 +630,8 @@ class _$StateCharactersError implements StateCharactersError {
 
   @JsonKey(ignore: true)
   @override
-  _$$StateCharactersErrorCopyWith<_$StateCharactersError> get copyWith =>
-      __$$StateCharactersErrorCopyWithImpl<_$StateCharactersError>(
+  _$$CharactersStateErrorCopyWith<_$CharactersStateError> get copyWith =>
+      __$$CharactersStateErrorCopyWithImpl<_$CharactersStateError>(
           this, _$identity);
 
   @override
@@ -568,7 +639,9 @@ class _$StateCharactersError implements StateCharactersError {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
-    required TResult Function(List<Character> data, String searchText) data,
+    required TResult Function(List<Character> data, String searchText,
+            bool isLoading, bool isEndOfData, String? errorMessage)
+        data,
     required TResult Function(String error, String searchText) error,
   }) {
     return error(this.error, searchText);
@@ -579,7 +652,9 @@ class _$StateCharactersError implements StateCharactersError {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> data, String searchText)? data,
+    TResult Function(List<Character> data, String searchText, bool isLoading,
+            bool isEndOfData, String? errorMessage)?
+        data,
     TResult Function(String error, String searchText)? error,
   }) {
     return error?.call(this.error, searchText);
@@ -590,7 +665,9 @@ class _$StateCharactersError implements StateCharactersError {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
-    TResult Function(List<Character> data, String searchText)? data,
+    TResult Function(List<Character> data, String searchText, bool isLoading,
+            bool isEndOfData, String? errorMessage)?
+        data,
     TResult Function(String error, String searchText)? error,
     required TResult orElse(),
   }) {
@@ -603,10 +680,10 @@ class _$StateCharactersError implements StateCharactersError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(StateCharactersInitial value) initial,
-    required TResult Function(StateCharactersLoading value) loading,
-    required TResult Function(StateCharactersData value) data,
-    required TResult Function(StateCharactersError value) error,
+    required TResult Function(CharactersStateInitial value) initial,
+    required TResult Function(CharactersStateLoading value) loading,
+    required TResult Function(CharactersStateData value) data,
+    required TResult Function(CharactersStateError value) error,
   }) {
     return error(this);
   }
@@ -614,10 +691,10 @@ class _$StateCharactersError implements StateCharactersError {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(StateCharactersInitial value)? initial,
-    TResult Function(StateCharactersLoading value)? loading,
-    TResult Function(StateCharactersData value)? data,
-    TResult Function(StateCharactersError value)? error,
+    TResult Function(CharactersStateInitial value)? initial,
+    TResult Function(CharactersStateLoading value)? loading,
+    TResult Function(CharactersStateData value)? data,
+    TResult Function(CharactersStateError value)? error,
   }) {
     return error?.call(this);
   }
@@ -625,10 +702,10 @@ class _$StateCharactersError implements StateCharactersError {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(StateCharactersInitial value)? initial,
-    TResult Function(StateCharactersLoading value)? loading,
-    TResult Function(StateCharactersData value)? data,
-    TResult Function(StateCharactersError value)? error,
+    TResult Function(CharactersStateInitial value)? initial,
+    TResult Function(CharactersStateLoading value)? loading,
+    TResult Function(CharactersStateData value)? data,
+    TResult Function(CharactersStateError value)? error,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -638,14 +715,14 @@ class _$StateCharactersError implements StateCharactersError {
   }
 }
 
-abstract class StateCharactersError implements StateBlocCharacters {
-  factory StateCharactersError(
+abstract class CharactersStateError implements CharactersState {
+  factory CharactersStateError(
       {required final String error,
-      required final String searchText}) = _$StateCharactersError;
+      required final String searchText}) = _$CharactersStateError;
 
   String get error;
   String get searchText;
   @JsonKey(ignore: true)
-  _$$StateCharactersErrorCopyWith<_$StateCharactersError> get copyWith =>
+  _$$CharactersStateErrorCopyWith<_$CharactersStateError> get copyWith =>
       throw _privateConstructorUsedError;
 }

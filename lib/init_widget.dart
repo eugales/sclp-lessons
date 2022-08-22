@@ -31,9 +31,9 @@ class InitWidget extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => BlocCharacters(
+            create: (context) => CharactersBloc(
               repo: RepositoryProvider.of<RepoCharacters>(context),
-            )..add(EventCharactersFilterByName(name: '')),
+            )..add(CharactersEventFetch(name: '')),
           ),
           BlocProvider(
             create: (context) => LocationsBloc(

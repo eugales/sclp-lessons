@@ -1,9 +1,13 @@
 part of 'bloc_characters.dart';
 
-abstract class EventBlocCharacters {}
+abstract class CharactersEvent {}
 
-class EventCharactersFilterByName extends EventBlocCharacters {
-  EventCharactersFilterByName({required this.name});
+class CharactersEventFetch extends CharactersEvent {
+  CharactersEventFetch({required this.name});
+  String name;
+}
 
-  final String name;
+class CharactersEventNextPage extends CharactersEvent {
+  CharactersEventNextPage({required this.name});
+  String name;
 }
