@@ -31,6 +31,7 @@ class Body extends StatelessWidget {
         },
         child: AppListView<LocationListTile>(
           items: data,
+          isListBordered: true,
           callback: (item) {
             Navigator.of(context).push(
               MaterialPageRoute(
